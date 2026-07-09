@@ -1,5 +1,5 @@
 # D&D Character Tracker Project
-## A an organizational tool to gather characters from across time, space, and Google Docs.
+## An organizational tool to gather characters from across time, space, and Google Docs.
 
 The project that I intend to design this term is a character tracker designed for Dungeon's and Dragons. With this tool, users will be able to make a campaign and then add participating characters to this campaign. Additionally, characters can be edited to include important information such as: 
 - Name

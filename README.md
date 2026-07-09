@@ -8,6 +8,4 @@ The project that I intend to design this term is a character tracker designed fo
 - statistics
 - Ability List
 
-The D&D Character Tracker is designed for game masters, players, or even writers. With the intention of creating a centralized place to store, edit, organize, and quickly access their character information.
-
-This project is of interest to me as I play in a lot of custom games that pre-existing software options such as D&D Beyond does not accommodate well. I am in need of a simple, yet organized way to store character sheet data that isn't a google doc, google sheet, or piece of paper. 
+The D&D Character Tracker is designed for game masters, players, or even writers. With the intention of creating a centralized place to store, edit, organize, and quickly access their character information. This project is of interest to me because I play in many custom games that pre-existing software options, such as D&D Beyond, do not accommodate. I am in need of a simple, yet organized way to store character sheet data that isn't a google doc, google sheet, or piece of paper. 

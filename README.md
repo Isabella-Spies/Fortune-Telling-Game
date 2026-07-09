@@ -18,5 +18,5 @@ Below are user stories. These will be continually updated as the project progres
 - I want to be able to select a game and view a list of all of the participating characters.
 - I want to be able to view a list of every character in every campaign.
 - I want to be able to create a character and specify information such as, name, age, appearance description, statistics, and ablility list.
-- I want to be able to select a character and view their ablility list and a list of their information.
-- I want to be able to remove a character from a game.
+- I want to be able to select a character and view their ablility list, and a list of their information.
+- I want to be able to select and remove a character from a game.

@@ -1,7 +1,7 @@
 # Fortune Telling Game
 ## A game for those in need of quick (not necessarily accurate) divination
 
-The project that I intend to design this term is a fortune telling game. Users will be able to make a game and then add it to a game log. The player will add a topic and then choose between two types of fortunes: 
+The project that I intend to design this term is a fortune telling game. Users will be able to make a fortune and then add it to a fortune log. The player will add a topic and then choose between two types of fortunes: 
 - Coin Flip
 - Card Reading
 

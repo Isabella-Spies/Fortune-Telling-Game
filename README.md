@@ -18,3 +18,6 @@ Below are user stories. These will be continually updated as the project progres
 - I want to be able to create a character and specify information such as, name, age, appearance, and description.
 - I want to be able to select a character and view a list of their information and edit it. 
 - I want to be able to select a list and remove a character from it.
+
+## Citations
+Basic Teller App: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git

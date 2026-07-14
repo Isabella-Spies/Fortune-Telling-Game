@@ -22,11 +22,9 @@ public class Fortune {
     // MODIFIES: this
     // EFFECTS: rolls and returns a random fortune
     //          picks between 0 and 1 for heads or tails
-    public int rollFortune(){
+    public void rollFortune(){
         // stub
-        return -1;
     }
-
 
     public String getTopic(){
         // stub

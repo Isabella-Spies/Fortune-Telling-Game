@@ -1,9 +1,9 @@
 package model;
 
-public class Story {
+public class Fortune {
     int other;
 
-    public Story() {
+    public Fortune() {
         other = 4;
     }
 }

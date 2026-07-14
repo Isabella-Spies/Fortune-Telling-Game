@@ -14,7 +14,7 @@ public class Fortune {
     //          given type is set to fortune type, result is empty
     //          rating starts as false
  
-    public Fortune(String topic, int type) {
+    public Fortune(String topic) {
         // stub
     }
 
@@ -22,23 +22,11 @@ public class Fortune {
     // MODIFIES: this
     // EFFECTS: rolls and returns a random fortune
     //          picks between 0 and 1 for heads or tails
-    //          picks three numbers between 0 and 21 with no repeating numbers
     public int rollFortune(){
         // stub
         return -1;
     }
 
-    // EFFECTS: rolls the card fortune as a number between 0 and 21
-    public int cardFortune(){
-        // stub
-        return -1;
-    }
-
-    // EFFECTS: rolls the coin fortune as 0 or 1
-    public int coinFortune(){
-        // stub
-        return -1;
-    }
 
     public String getTopic(){
         // stub

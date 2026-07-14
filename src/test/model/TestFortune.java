@@ -3,6 +3,8 @@ package model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,13 +20,32 @@ public class TestFortune {
     @Test
     void testConstructor() {
         assertEquals(testFortune1.getTopic(), "Should I get a coffee?");
-        assertEquals(testFortune2.getType(), 0);
+        assertEquals(testFortune1.getType(), 0);
+        assertEquals(testFortune1.getResult(), null);
+        assertEquals(testFortune1.getRating(), false);
     }
 
     @Test
     void rollFortuneTest(){
-        
-        
+        ArrayList<String> acceptedOutputs = new ArrayList<String>();
+        acceptedOutputs.add("Heads");
+        acceptedOutputs.add("Tails");
+
+        testFortune1.rollFortune();
+        assertTrue(acceptedOutputs.contains(testFortune1.getResult()));
+    }
+
+    @Test
+    void rollFortuneTestMultiples(){
+        ArrayList<String> acceptedOutputs = new ArrayList<String>();
+        acceptedOutputs.add("Heads");
+        acceptedOutputs.add("Tails");
+
+        testFortune1.rollFortune();
+        assertTrue(acceptedOutputs.contains(testFortune1.getResult()));
+
+        testFortune1.rollFortune();
+        assertTrue(acceptedOutputs.contains(testFortune1.getResult()));
     }
 
 

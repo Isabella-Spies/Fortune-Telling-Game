@@ -7,15 +7,14 @@ The project that I intend to design this term is a character tracker designed fo
 - Appearance
 - Description
 
-The Character Tracker is designed for writers with the intention of creating a centralized place to store, edit, organize, and quickly access their character information. This project is of interest to me because I am in need of a simple, yet organized way to store character data that isn't a google doc, google sheet, or piece of paper. 
+The Character Tracker is designed for writers with the intention of creating a centralized place to store, edit, organize, and quickly access their character information. This project is of interest to me because I am a writer in need of a simple, yet organized way to store character data that isn't a google doc, google sheet, or piece of paper. 
 
 
 ## User Stories
 Below are user stories. These will be continually updated as the project progresses.
 
-- I want to be able to add a character to my list of characters.
-- I want to be able to view a list of every character
+- I want to be able to create a project list and add characters to it
+- I want to be able to view a list of every character in a project
 - I want to be able to create a character and specify information such as, name, age, appearance, and description.
-- I want to be able to select a character and view a list of their information.
-- I want to be able to select a character and edit their information. 
-- I want to be able to select and remove a character from a the list.
+- I want to be able to select a character and view a list of their information and edit it. 
+- I want to be able to select a list and remove a character from it.

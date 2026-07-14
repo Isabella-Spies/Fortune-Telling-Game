@@ -1,3 +1,6 @@
+package ui;
+
+// Fortune game application
 public class FortuneGame {
     
 }

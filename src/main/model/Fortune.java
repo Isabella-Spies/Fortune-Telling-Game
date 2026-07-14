@@ -3,12 +3,11 @@ package model;
 // Represents a fortune that has a topic, type, result, and rating
 public class Fortune {
     private String topic;
-    // a type where 0 means coin flip, 1 means card draw
     private int type;
     private String result;
     private boolean rating;
 
-    // 
+
     // REQUIRES: topic has a non zero length
     //           type must be >= 0
     // EFFECTS: given topic is set to fortune topic, 
@@ -24,8 +23,21 @@ public class Fortune {
     // EFFECTS: rolls and returns a random fortune
     //          picks between 0 and 1 for heads or tails
     //          picks three numbers between 0 and 21 with no repeating numbers
-    public void rollFortune(){
+    public int rollFortune(){
         // stub
+        return -1;
+    }
+
+    // EFFECTS: rolls the card fortune as a number between 0 and 21
+    public int cardFortune(){
+        // stub
+        return -1;
+    }
+
+    // EFFECTS: rolls the coin fortune as 0 or 1
+    public int coinFortune(){
+        // stub
+        return -1;
     }
 
     public String getTopic(){

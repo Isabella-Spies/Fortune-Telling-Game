@@ -26,7 +26,7 @@ public class TestFortune {
     }
 
     @Test
-    void rollFortuneTest(){
+    void testRollFortune(){
         ArrayList<String> acceptedOutputs = new ArrayList<String>();
         acceptedOutputs.add("Heads");
         acceptedOutputs.add("Tails");
@@ -36,7 +36,7 @@ public class TestFortune {
     }
 
     @Test
-    void rollFortuneTestMultiples(){
+    void testRollFortuneMultiples(){
         ArrayList<String> acceptedOutputs = new ArrayList<String>();
         acceptedOutputs.add("Heads");
         acceptedOutputs.add("Tails");

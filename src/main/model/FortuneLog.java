@@ -23,8 +23,8 @@ public class FortuneLog {
     // TODO
     // REQUIRES: index >= 0
     // MODIFIES: this
-    // EFFECTS: Gives the name of a fortune at the given index
-    public String getFortuneName(int index){
+    // EFFECTS: Gives the topic and result of a fortune at the given index
+    public String getFortune(int index){
         // stub
         return null;
     }
@@ -32,14 +32,18 @@ public class FortuneLog {
     // TODO
     // MODIFIES: this
     // EFFECTS: gives a list of of all fortunes with a good rating
-    public ArrayList<String> getGoodFortunes(){
+    public ArrayList<Fortune> getGoodFortunes(){
         return null;
     }
 
     // TODO
     // MODIFIES: this
     // EFFECTS: gives a list of of all fortunes with a bad rating
-    public ArrayList<String> getBadFortunes(){
+    public ArrayList<Fortune> getBadFortunes(){
+        return null;
+    }
+
+    public ArrayList<Fortune> getFortuneList(){
         return null;
     }
     

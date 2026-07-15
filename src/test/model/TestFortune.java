@@ -9,20 +9,20 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TestFortune {
-    Fortune testFortune1;
+    Fortune testFortune;
     Fortune testFortune2;
 
     @BeforeEach
     void runBefore() {
-        testFortune1 = new Fortune("Should I get a coffee?");
+        testFortune = new Fortune("Should I get a coffee?");
     }
 
     @Test
     void testConstructor() {
-        assertEquals(testFortune1.getTopic(), "Should I get a coffee?");
-        assertEquals(testFortune1.getType(), 0);
-        assertEquals(testFortune1.getResult(), null);
-        assertEquals(testFortune1.getRating(), false);
+        assertEquals(testFortune.getTopic(), "Should I get a coffee?");
+        assertEquals(testFortune.getType(), 0);
+        assertEquals(testFortune.getResult(), null);
+        assertEquals(testFortune.getRating(), false);
     }
 
     @Test
@@ -31,8 +31,8 @@ public class TestFortune {
         acceptedOutputs.add("Heads");
         acceptedOutputs.add("Tails");
 
-        testFortune1.rollFortune();
-        assertTrue(acceptedOutputs.contains(testFortune1.getResult()));
+        testFortune.rollFortune();
+        assertTrue(acceptedOutputs.contains(testFortune.getResult()));
     }
 
     @Test
@@ -41,11 +41,21 @@ public class TestFortune {
         acceptedOutputs.add("Heads");
         acceptedOutputs.add("Tails");
 
-        testFortune1.rollFortune();
-        assertTrue(acceptedOutputs.contains(testFortune1.getResult()));
+        testFortune.rollFortune();
+        assertTrue(acceptedOutputs.contains(testFortune.getResult()));
 
-        testFortune1.rollFortune();
-        assertTrue(acceptedOutputs.contains(testFortune1.getResult()));
+        testFortune.rollFortune();
+        assertTrue(acceptedOutputs.contains(testFortune.getResult()));
+    }
+
+    @Test
+    void testInterpretFortuneHeads(){
+        assertEquals(testFortune.interpretFortune(0), "Heads");
+    }
+
+    @Test
+    void testInterpretFortuneTails(){
+        assertEquals(testFortune.interpretFortune(1), "Tails");
     }
 
 

@@ -35,6 +35,10 @@ public class TestFortuneLog {
     }
 
     @Test
+    public void testConstructor(){
+        assertTrue(testFortuneLog.getFortuneList().size() == 0);
+    }
+    @Test
     public void testAddFortune(){
         testFortuneLog.addFortune(testFortune1);
         assertTrue(testFortuneLog.getFortuneList().contains(testFortune1));
@@ -61,7 +65,7 @@ public class TestFortuneLog {
         assertEquals(testFortuneLog.getFortune(0), "Topic: [Will it be sunny?] Result: [Heads]");
 
         testFortuneLog.addFortune(testFortune2);
-        assertEquals(testFortuneLog.getFortune(0), "Topic: [Will it be rainy?] Result: [Tails]");
+        assertEquals(testFortuneLog.getFortune(1), "Topic: [Will it be rainy?] Result: [Tails]");
 
     }
 
@@ -82,7 +86,7 @@ public class TestFortuneLog {
 
         assertFalse(testFortuneLog.getGoodFortunes().contains(testFortune1));
         assertTrue(testFortuneLog.getGoodFortunes().contains(testFortune2));
-        assertTrue(testFortuneLog.getGoodFortunes().contains(testFortune3));
+        assertTrue(testFortuneLog.getGoodFortunes().contains(testFortune4));
     }
 
     @Test
@@ -90,8 +94,8 @@ public class TestFortuneLog {
         testFortuneLog.addFortune(testFortune1);
         testFortuneLog.addFortune(testFortune2);
 
-        assertFalse(testFortuneLog.getGoodFortunes().contains(testFortune2));
-        assertTrue(testFortuneLog.getGoodFortunes().contains(testFortune1));
+        assertFalse(testFortuneLog.getBadFortunes().contains(testFortune2));
+        assertTrue(testFortuneLog.getBadFortunes().contains(testFortune1));
     }
 
     @Test
@@ -101,10 +105,10 @@ public class TestFortuneLog {
         testFortuneLog.addFortune(testFortune3);
         testFortuneLog.addFortune(testFortune4);
 
-        assertFalse(testFortuneLog.getGoodFortunes().contains(testFortune2));
-        assertFalse(testFortuneLog.getGoodFortunes().contains(testFortune4));
-        assertTrue(testFortuneLog.getGoodFortunes().contains(testFortune1));
-        assertTrue(testFortuneLog.getGoodFortunes().contains(testFortune3));
+        assertFalse(testFortuneLog.getBadFortunes().contains(testFortune2));
+        assertFalse(testFortuneLog.getBadFortunes().contains(testFortune4));
+        assertTrue(testFortuneLog.getBadFortunes().contains(testFortune1));
+        assertTrue(testFortuneLog.getBadFortunes().contains(testFortune3));
     }
 
 

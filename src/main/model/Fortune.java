@@ -35,14 +35,11 @@ public class Fortune {
     // MODIFIES: this
     // EFFECTS: turns the flip result into a fortune
     public String interpretFortune(int flip){
-        if (flip == 0){
-            return "Heads";
-        } else if (flip == 1){
+       if (flip == 1){
             return "Tails";
         } else{
-            return "Error";
+            return "Heads";
         }
-
     }
 
     public String getTopic(){
@@ -71,6 +68,11 @@ public class Fortune {
 
     public void setResult(String result){
         this.result = result;
+    }
+
+    @Override
+    public String toString(){
+        return "Topic: [" + topic + "] Result: [" + result + "]";
     }
 
 }

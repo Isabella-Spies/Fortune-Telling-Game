@@ -10,14 +10,14 @@ public class FortuneLog {
     // MODIFIES: this
     // EFFECTS: Creates an empty fortuneList 
     public FortuneLog(){
-        //stub
+        fortuneList = new ArrayList<>();
     }
 
-    // TODO
+
     // MODIFIES: this
     // EFFECTS: Adds a fortune to the list
     public void addFortune(Fortune fortune){
-        //stub
+        fortuneList.add(fortune);
     }
 
     // TODO
@@ -25,26 +25,37 @@ public class FortuneLog {
     // MODIFIES: this
     // EFFECTS: Gives the topic and result of a fortune at the given index
     public String getFortune(int index){
-        // stub
-        return null;
+        return fortuneList.get(index).toString();
     }
 
     // TODO
     // MODIFIES: this
     // EFFECTS: gives a list of of all fortunes with a good rating
     public ArrayList<Fortune> getGoodFortunes(){
-        return null;
+        ArrayList<Fortune> goodFortunes = new ArrayList<>();
+        for (Fortune fortune : fortuneList){
+            if (fortune.getRating() == true){
+                goodFortunes.add(fortune);
+            }
+        }
+        return goodFortunes;
     }
 
     // TODO
     // MODIFIES: this
     // EFFECTS: gives a list of of all fortunes with a bad rating
     public ArrayList<Fortune> getBadFortunes(){
-        return null;
+        ArrayList<Fortune> badFortunes = new ArrayList<>();
+        for (Fortune fortune : fortuneList){
+            if (fortune.getRating() == false){
+                badFortunes.add(fortune);
+            }
+        }
+        return badFortunes;
     }
 
     public ArrayList<Fortune> getFortuneList(){
-        return null;
+        return fortuneList;
     }
     
 }

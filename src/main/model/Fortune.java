@@ -26,7 +26,7 @@ public class Fortune {
     // MODIFIES: this
     // EFFECTS: rolls and returns a random fortune
     //          picks between 0 and 1 for heads or tails
-    public void rollFortune(){
+    public void rollFortune() {
         int flip = random.nextInt(2);
         result = interpretFortune(flip);
     }
@@ -34,44 +34,44 @@ public class Fortune {
     // REQUIRES: flip >= 0
     // MODIFIES: this
     // EFFECTS: turns the flip result into a fortune
-    public String interpretFortune(int flip){
-       if (flip == 1){
+    public String interpretFortune(int flip) {
+        if (flip == 1) {
             return "Tails";
-        } else{
+        } else {
             return "Heads";
         }
     }
 
-    public String getTopic(){
+    public String getTopic() {
         // stub
         return topic;
     }
 
-    public int getType(){
+    public int getType() {
         // stub
         return type;
     }
 
-    public String getResult(){
+    public String getResult() {
         // stub
         return result;
     }
 
-    public boolean getRating(){
+    public boolean getRating() {
         // stub
         return rating;
     }
 
-    public void setRating(boolean rating){
+    public void setRating(boolean rating) {
         this.rating = rating;
     }
 
-    public void setResult(String result){
+    public void setResult(String result) {
         this.result = result;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Topic: [" + topic + "] Result: [" + result + "]";
     }
 

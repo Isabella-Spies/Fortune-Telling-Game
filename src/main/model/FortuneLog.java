@@ -1,60 +1,56 @@
 package model;
 
 import java.util.ArrayList;
+
 // Represents a log of previous Fortunes 
 public class FortuneLog {
-
     private ArrayList<Fortune> fortuneList;
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: Creates an empty fortuneList 
-    public FortuneLog(){
+    public FortuneLog() {
         fortuneList = new ArrayList<>();
     }
 
 
     // MODIFIES: this
     // EFFECTS: Adds a fortune to the list
-    public void addFortune(Fortune fortune){
+    public void addFortune(Fortune fortune) {
         fortuneList.add(fortune);
     }
 
-    // TODO
     // REQUIRES: index >= 0
     // MODIFIES: this
     // EFFECTS: Gives the topic and result of a fortune at the given index
-    public String getFortune(int index){
+    public String getFortune(int index) {
         return fortuneList.get(index).toString();
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: gives a list of of all fortunes with a good rating
-    public ArrayList<Fortune> getGoodFortunes(){
+    public ArrayList<Fortune> getGoodFortunes() {
         ArrayList<Fortune> goodFortunes = new ArrayList<>();
-        for (Fortune fortune : fortuneList){
-            if (fortune.getRating() == true){
+        for (Fortune fortune : fortuneList) {
+            if (fortune.getRating() == true) {
                 goodFortunes.add(fortune);
             }
         }
         return goodFortunes;
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: gives a list of of all fortunes with a bad rating
-    public ArrayList<Fortune> getBadFortunes(){
+    public ArrayList<Fortune> getBadFortunes() {
         ArrayList<Fortune> badFortunes = new ArrayList<>();
-        for (Fortune fortune : fortuneList){
-            if (fortune.getRating() == false){
+        for (Fortune fortune : fortuneList) {
+            if (fortune.getRating() == false) {
                 badFortunes.add(fortune);
             }
         }
         return badFortunes;
     }
 
-    public ArrayList<Fortune> getFortuneList(){
+    public ArrayList<Fortune> getFortuneList() {
         return fortuneList;
     }
     

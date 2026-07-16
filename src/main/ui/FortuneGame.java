@@ -11,6 +11,7 @@ public class FortuneGame {
 
     public FortuneGame() {
         fortuneLog = new FortuneLog();
+        input = new Scanner(System.in);
         runFortuneGame();
     }
 
@@ -26,10 +27,10 @@ public class FortuneGame {
             command = input.next();
             command = command.toLowerCase();  
                      
-            if (command == "q") {
+            if (command.equals("q")) {
                 runGame = false;
             } else {
-                while (invalidCommand(command)) {
+                while (!validCommand(command)) {
                     System.out.println("invalid input. try again");
                     displayMenu();
                     command = input.next();
@@ -58,16 +59,23 @@ public class FortuneGame {
         System.out.println("s. See previous fortunes");
         System.out.println("d. See fortunes with good ratings");
         System.out.println("f. See fortunes with bad ratings");
+        System.out.println("q. Quit");
 
     }
 
     // MODIFIES: this
     // EFFECTS: retruns true if given letter corresponds to a valid command
-    private boolean invalidCommand(String command) {
-        if(command == "a" || command == "s" || command == "d" || command == "f") {
-            return false;
+    private boolean validCommand(String command) {
+        if(command.equals("a")) {
+            return true;
+        } else if (command.equals("s")){
+            return true;
+        } else if (command.equals("d")) {
+            return true;
+        } else if (command.equals("f")) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     // MODIFIES: this
@@ -89,9 +97,10 @@ public class FortuneGame {
         System.out.println("g. good");
         System.out.println("b. bad");
 
+        input.nextLine();
         String rating = input.next();
         rating = rating.toLowerCase();
-        if (rating == "g") {
+        if (rating.equals("g")) {
             fortune.setRating(true);
         } else {
             fortune.setRating(false);
@@ -120,13 +129,13 @@ public class FortuneGame {
     // MODIFIES: this
     // EFFECTS: runs different processes based on given user input
     private void processUserInput(String command) {
-        if (command == "a"){
+        if (command.equals("a")){
             doFortuneTelling();
-        } else if (command == "s") {
+        } else if (command.equals("s")) {
             doSeeAllFortunes();
-        } else if (command == "d") {
+        } else if (command.equals("d")) {
             doSeeGoodFortunes();
-        } else if (command == "f") {
+        } else if (command.equals("f")) {
             doSeeBadFortunes();
         }
     }

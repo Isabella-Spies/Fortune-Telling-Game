@@ -1,6 +1,110 @@
 package ui;
 
+import model.FortuneLog;
+
 // Fortune game application
 public class FortuneGame {
-    
+    private FortuneLog fortuneLog;
+    private Scanner input;
+
+    public FortuneGame() {
+        fortuneLog = new FortuneLog();
+        runFortuneGame();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: runs the fortune game and processes user input
+    private runFortuneGame() {
+        boolean runGame = true;
+        String command = null;
+
+        displayWelcomeMessage();
+
+        while(runGame) {
+            boolean invalidInput = true;
+            displayMenu(); 
+            command = input.next()
+            command = command.toLowerCase();  
+                     
+            if (command == "q") {
+                runGame = false;
+            } else {
+                while (invalidCommand(command)) {
+                    System.out.println("invalid input. try again");
+                    displayMenu();
+                    command = input.next();
+                    command = command.toLowerCase();
+                }
+                processesUserInput(command);
+            }
+           
+        }
+
+        System.out.println("Thanks for playing!");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: displays the welcom message
+    private void displayWelcomeMessage() {
+        System.out.println("Welcome to The Fortune Game!");
+        System.out.println("For those in need of a quick fortune.");
+        System.out.println("*Disclaimer: Fortunes not necessarily accurate.");
+    }
+    // MODIFIES: this
+    // EFFECTS: displays a list of user options
+    private void displayMenu() {
+        System.out.println("Select:");
+        System.out.println("a. Get your fortune told");
+        System.out.println("s. See previous fortunes");
+        System.out.println("d. See fortunes with good ratings");
+        System.out.println("f. See fortunes with bad ratings");
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS: retruns true if given letter corresponds to a valid command
+    private boolean invalidCommand(String command) {
+        if(command == "a" || command == "s" || command == "d" || command == "f") {
+            return false;
+        }
+        return true;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: makes a fortune and rolls result
+    private void doFortuneTelling() {
+        //stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: displays all fortunes
+    private void doSeeAllFortunes() {
+        //stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Displays all good fortunes
+    private void doSeeGoodFortunes() {
+        //stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Displays all bad fortunes
+    private void doSeeBadFortunes() {
+        //stub
+    }
+
+    private void 
+    // REQUIRES: string != null
+    // MODIFIES: this
+    // EFFECTS: runs different processes based on given user input
+    private void processUserInput(String command) {
+        if (command == "a"){
+            doFortuneTelling();
+        } else if (command == "s") {
+
+        } else if (command == "d") {
+
+        } else if (command == "f")
+    }
 }

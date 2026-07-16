@@ -1,6 +1,8 @@
 package ui;
 
 import model.FortuneLog;
+import model.Fortune;
+import java.util.Scanner;
 
 // Fortune game application
 public class FortuneGame {
@@ -14,16 +16,14 @@ public class FortuneGame {
 
     // MODIFIES: this
     // EFFECTS: runs the fortune game and processes user input
-    private runFortuneGame() {
+    private void runFortuneGame() {
         boolean runGame = true;
         String command = null;
 
         displayWelcomeMessage();
-
         while(runGame) {
-            boolean invalidInput = true;
             displayMenu(); 
-            command = input.next()
+            command = input.next();
             command = command.toLowerCase();  
                      
             if (command == "q") {
@@ -35,7 +35,7 @@ public class FortuneGame {
                     command = input.next();
                     command = command.toLowerCase();
                 }
-                processesUserInput(command);
+                processUserInput(command);
             }
            
         }
@@ -48,7 +48,7 @@ public class FortuneGame {
     private void displayWelcomeMessage() {
         System.out.println("Welcome to The Fortune Game!");
         System.out.println("For those in need of a quick fortune.");
-        System.out.println("*Disclaimer: Fortunes not necessarily accurate.");
+        System.out.println("Disclaimer: Fortunes not necessarily accurate.");
     }
     // MODIFIES: this
     // EFFECTS: displays a list of user options
@@ -73,7 +73,29 @@ public class FortuneGame {
     // MODIFIES: this
     // EFFECTS: makes a fortune and rolls result
     private void doFortuneTelling() {
-        //stub
+        System.out.println("The fortune teller will answer by flipping a coin.");
+        System.out.println("What is you question for the fortune teller?");
+        String command = input.next();
+
+        Fortune fortune = new Fortune(command);
+        fortune.rollFortune();
+        System.out.println("The result is " + fortune.getResult() + "!");
+        fortuneLog.addFortune(fortune);
+        rateFortuneResult(fortune);
+    }
+
+    private void rateFortuneResult(Fortune fortune) {
+        System.out.println("Rate the result:");
+        System.out.println("g. good");
+        System.out.println("b. bad");
+
+        String rating = input.next();
+        rating = rating.toLowerCase();
+        if (rating == "g") {
+            fortune.setRating(true);
+        } else {
+            fortune.setRating(false);
+        }
     }
 
     // MODIFIES: this
@@ -94,7 +116,6 @@ public class FortuneGame {
         //stub
     }
 
-    private void 
     // REQUIRES: string != null
     // MODIFIES: this
     // EFFECTS: runs different processes based on given user input
@@ -102,9 +123,11 @@ public class FortuneGame {
         if (command == "a"){
             doFortuneTelling();
         } else if (command == "s") {
-
+            doSeeAllFortunes();
         } else if (command == "d") {
-
-        } else if (command == "f")
+            doSeeGoodFortunes();
+        } else if (command == "f") {
+            doSeeBadFortunes();
+        }
     }
 }

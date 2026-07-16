@@ -3,6 +3,7 @@ package ui;
 import model.FortuneLog;
 import model.Fortune;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 // Fortune game application
 public class FortuneGame {
@@ -23,6 +24,7 @@ public class FortuneGame {
 
         displayWelcomeMessage();
         while(runGame) {
+            System.out.println();
             displayMenu(); 
             command = input.next();
             command = command.toLowerCase();  
@@ -31,6 +33,7 @@ public class FortuneGame {
                 runGame = false;
             } else {
                 while (!validCommand(command)) {
+                    System.out.println();
                     System.out.println("invalid input. try again");
                     displayMenu();
                     command = input.next();
@@ -83,9 +86,11 @@ public class FortuneGame {
     private void doFortuneTelling() {
         System.out.println("The fortune teller will answer by flipping a coin.");
         System.out.println("What is you question for the fortune teller?");
-        String command = input.next();
+        input.nextLine();
+        String command = input.nextLine();
 
         Fortune fortune = new Fortune(command);
+        System.out.println();
         fortune.rollFortune();
         System.out.println("The result is " + fortune.getResult() + "!");
         fortuneLog.addFortune(fortune);
@@ -93,11 +98,11 @@ public class FortuneGame {
     }
 
     private void rateFortuneResult(Fortune fortune) {
+        System.out.println();
         System.out.println("Rate the result:");
         System.out.println("g. good");
         System.out.println("b. bad");
 
-        input.nextLine();
         String rating = input.next();
         rating = rating.toLowerCase();
         if (rating.equals("g")) {
@@ -110,25 +115,54 @@ public class FortuneGame {
     // MODIFIES: this
     // EFFECTS: displays all fortunes
     private void doSeeAllFortunes() {
-        //stub
+        int counter = 1;
+        ArrayList<Fortune> listOfFortunes = fortuneLog.getFortuneList();
+        if (listOfFortunes.size() > 0) {
+            for (Fortune fortune: listOfFortunes) {
+                System.out.println(counter + ". " + fortune.toString());
+                counter++;
+            }
+        } else {
+            System.out.println("There are no fortunes yet. Be brave, try it!");
+        }
+        
     }
 
     // MODIFIES: this
     // EFFECTS: Displays all good fortunes
     private void doSeeGoodFortunes() {
-        //stub
+         int counter = 1;
+        ArrayList<Fortune> listOfFortunes = fortuneLog.getGoodFortunes();
+        if (listOfFortunes.size() > 0) {
+            for (Fortune fortune: listOfFortunes) {
+                System.out.println(counter + ". " + fortune.toString());
+                counter++;
+            }
+        } else {
+            System.out.println("There are no good fortunes yet... That is unfortunate.");
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: Displays all bad fortunes
     private void doSeeBadFortunes() {
-        //stub
+         int counter = 1;
+        ArrayList<Fortune> listOfFortunes = fortuneLog.getBadFortunes();
+        if (listOfFortunes.size() > 0) {
+            for (Fortune fortune: listOfFortunes) {
+                System.out.println(counter + ". " + fortune.toString());
+                counter++;
+            }
+        } else {
+            System.out.println("There are no bad fortunes yet. Lucky you!");
+        }
     }
 
     // REQUIRES: string != null
     // MODIFIES: this
     // EFFECTS: runs different processes based on given user input
     private void processUserInput(String command) {
+        System.out.println();
         if (command.equals("a")){
             doFortuneTelling();
         } else if (command.equals("s")) {

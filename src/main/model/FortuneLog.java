@@ -1,6 +1,5 @@
 package model;
 
-
 import java.util.ArrayList;
 
 // Represents a log of previous Fortunes 

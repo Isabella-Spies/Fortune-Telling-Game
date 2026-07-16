@@ -35,7 +35,7 @@ public class TestFortuneLog {
 
     @Test
     public void testConstructor(){
-        assertTrue(testFortuneLog.getFortuneList().size() == 0);
+        assertEquals(testFortuneLog.getFortuneList().size(), 0);
     }
     @Test
     public void testAddFortune(){

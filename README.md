@@ -7,7 +7,7 @@ The project that I intend to design this term is a fortune telling game. Users w
 ## User stories: 
 - I want to be able to make a game and add it to a list of previous games
 - I want to be able to specify a topic for the fortune and receive a result fortune
-- I want to be able to select a fortune and rate it
+- I want to be able to rate a fortune
 - I want to be able to see a list of fortunes with a good rating
 - I want to be able to see a list of fortunes with a bad rating
 - I want to be able to see a list of all fortunes and their results.

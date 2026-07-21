@@ -9,7 +9,7 @@ public class FortuneLog {
     // MODIFIES: this
     // EFFECTS: Creates an empty fortuneList 
     public FortuneLog() {
-        fortuneList = new ArrayList<>();
+        fortuneList = new ArrayList<Fortune>();
     }
 
 

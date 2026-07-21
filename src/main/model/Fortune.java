@@ -5,7 +5,6 @@ import java.util.Random;
 // Represents a fortune that has a topic, type, result, and rating
 public class Fortune {
     private String topic;
-    private int type;
     private String result;
     private boolean rating;
     private Random random = new Random();

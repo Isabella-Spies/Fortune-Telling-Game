@@ -23,7 +23,7 @@ public class FortuneLog {
     // MODIFIES: this
     // EFFECTS: removes a fortune from the list at the given index
     public void removeFortune(int index) {
-        // stub
+        getFortuneList().remove(index);
     }
 
     // REQUIRES: index >= 0

@@ -68,6 +68,7 @@ public class FortuneGame {
         System.out.println("s. See previous fortunes");
         System.out.println("d. See fortunes with good ratings");
         System.out.println("f. See fortunes with bad ratings");
+        System.out.println("g. Remove a fortune from the log");
         System.out.println("q. Quit");
 
     }
@@ -82,6 +83,8 @@ public class FortuneGame {
         } else if (command.equals("d")) {
             return true;
         } else if (command.equals("f")) {
+            return true;
+        } else if (command.equals("g")) {
             return true;
         }
         return false;
@@ -164,6 +167,36 @@ public class FortuneGame {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: Helps the user remove a fortune from FortuneLog
+    private void doRemoveFortunes() {
+        ArrayList<Fortune> listOfFortunes = fortuneLog.getFortuneList();
+        if (listOfFortunes.size() > 0) {
+            doSeeAllFortunes();
+            boolean notValid = true;
+            while (notValid) {
+            System.out.println("Input the number of the fortune that you would like to remove:");
+            input.nextLine();
+            int index = input.nextInt();
+            if (index >= 1 && index <= listOfFortunes.size()) {
+                System.out.println("Fortune Number " + index + " was removed.");
+                index--;
+                fortuneLog.removeFortune(index);
+                notValid = false;
+            } else {
+                System.out.println("Invalid number.");
+                System.out.println("");
+            }
+            }
+            
+
+        } else {
+            System.out.println("There are no fortunes to remove.");
+        }
+        
+
+    }
+
     // REQUIRES: string != null
     // MODIFIES: this
     // EFFECTS: runs different processes based on given user input
@@ -177,6 +210,8 @@ public class FortuneGame {
             doSeeGoodFortunes();
         } else if (command.equals("f")) {
             doSeeBadFortunes();
+        } else if (command.equals("g")) {
+            doRemoveFortunes();
         }
     }
 }

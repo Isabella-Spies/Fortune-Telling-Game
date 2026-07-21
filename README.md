@@ -20,3 +20,5 @@ The project that I intend to design this term is a fortune telling game. Users w
 
 ## Citations
 Basic Teller App: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
+JSON Serialization App: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+

@@ -57,6 +57,30 @@ public class TestFortuneLog {
     }
 
     @Test
+    public void testRemoveFortune() {
+        testFortuneLog.addFortune(testFortune1);
+        assertTrue(testFortuneLog.getFortuneList().contains(testFortune1));
+
+        testFortuneLog.removeFortune(0);
+        assertFalse(testFortuneLog.getFortuneList().contains(testFortune1));
+    }
+
+    @Test
+    public void testRemoveFortuneMultiples() {
+        testFortuneLog.addFortune(testFortune1);
+        assertTrue(testFortuneLog.getFortuneList().contains(testFortune1));
+
+        testFortuneLog.addFortune(testFortune2);
+        assertTrue(testFortuneLog.getFortuneList().contains(testFortune2));
+
+        testFortuneLog.removeFortune(1);
+        assertFalse(testFortuneLog.getFortuneList().contains(testFortune2));
+
+        testFortuneLog.removeFortune(0);
+        assertFalse(testFortuneLog.getFortuneList().contains(testFortune1));
+    }
+
+    @Test
     public void getFortuneTopic() {
         testFortuneLog.addFortune(testFortune1);
         assertEquals(testFortuneLog.getFortune(0), "Topic: [Will it be sunny?] Result: [Heads]");

@@ -23,7 +23,6 @@ public class TestFortune {
     @Test
     void testConstructor() {
         assertEquals(testFortune.getTopic(), "Should I get a coffee?");
-        assertEquals(testFortune.getType(), 0);
         assertEquals(testFortune.getResult(), null);
         assertEquals(testFortune.getRating(), false);
     }

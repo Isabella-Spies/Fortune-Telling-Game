@@ -18,7 +18,6 @@ public class Fortune {
     //          rating starts as false
     public Fortune(String topic) {
         this.topic = topic;
-        this.type = 0;
         this.rating = false;
     }
 
@@ -44,11 +43,6 @@ public class Fortune {
     public String getTopic() {
         // stub
         return topic;
-    }
-
-    public int getType() {
-        // stub
-        return type;
     }
 
     public String getResult() {

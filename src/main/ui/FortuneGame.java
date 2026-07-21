@@ -3,9 +3,14 @@ package ui;
 import model.FortuneLog;
 import model.Fortune;
 import java.util.Scanner;
+
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
+
 import java.util.ArrayList;
 
+
 // Fortune game application
+@ExcludeFromJacocoGeneratedReport
 public class FortuneGame {
     private FortuneLog fortuneLog;
     private Scanner input;

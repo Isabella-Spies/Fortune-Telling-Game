@@ -23,7 +23,7 @@ public class FortuneGame {
         String command = null;
 
         displayWelcomeMessage();
-        while(runGame) {
+        while (runGame) {
             System.out.println();
             displayMenu(); 
             command = input.next();
@@ -54,6 +54,7 @@ public class FortuneGame {
         System.out.println("For those in need of a quick fortune.");
         System.out.println("Disclaimer: Fortunes not necessarily accurate.");
     }
+
     // MODIFIES: this
     // EFFECTS: displays a list of user options
     private void displayMenu() {
@@ -69,9 +70,9 @@ public class FortuneGame {
     // MODIFIES: this
     // EFFECTS: retruns true if given letter corresponds to a valid command
     private boolean validCommand(String command) {
-        if(command.equals("a")) {
+        if (command.equals("a")) {
             return true;
-        } else if (command.equals("s")){
+        } else if (command.equals("s")) {
             return true;
         } else if (command.equals("d")) {
             return true;
@@ -131,7 +132,7 @@ public class FortuneGame {
     // MODIFIES: this
     // EFFECTS: Displays all good fortunes
     private void doSeeGoodFortunes() {
-         int counter = 1;
+        int counter = 1;
         ArrayList<Fortune> listOfFortunes = fortuneLog.getGoodFortunes();
         if (listOfFortunes.size() > 0) {
             for (Fortune fortune: listOfFortunes) {
@@ -146,7 +147,7 @@ public class FortuneGame {
     // MODIFIES: this
     // EFFECTS: Displays all bad fortunes
     private void doSeeBadFortunes() {
-         int counter = 1;
+        int counter = 1;
         ArrayList<Fortune> listOfFortunes = fortuneLog.getBadFortunes();
         if (listOfFortunes.size() > 0) {
             for (Fortune fortune: listOfFortunes) {
@@ -163,7 +164,7 @@ public class FortuneGame {
     // EFFECTS: runs different processes based on given user input
     private void processUserInput(String command) {
         System.out.println();
-        if (command.equals("a")){
+        if (command.equals("a")) {
             doFortuneTelling();
         } else if (command.equals("s")) {
             doSeeAllFortunes();

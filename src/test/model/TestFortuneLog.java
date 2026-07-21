@@ -16,7 +16,7 @@ public class TestFortuneLog {
     private Fortune testFortune4;
 
     @BeforeEach
-    void runBefore(){
+    void runBefore() {
         testFortuneLog = new FortuneLog();
 
         testFortune1 = new Fortune("Will it be sunny?");
@@ -34,17 +34,18 @@ public class TestFortuneLog {
     }
 
     @Test
-    public void testConstructor(){
+    public void testConstructor() {
         assertEquals(testFortuneLog.getFortuneList().size(), 0);
     }
+
     @Test
-    public void testAddFortune(){
+    public void testAddFortune() {
         testFortuneLog.addFortune(testFortune1);
         assertTrue(testFortuneLog.getFortuneList().contains(testFortune1));
     }
 
     @Test
-    public void testAddFortuneMultiples(){
+    public void testAddFortuneMultiples() {
         testFortuneLog.addFortune(testFortune1);
         assertTrue(testFortuneLog.getFortuneList().contains(testFortune1));
 
@@ -53,13 +54,13 @@ public class TestFortuneLog {
     }
 
     @Test
-    public void getFortuneTopic(){
+    public void getFortuneTopic() {
         testFortuneLog.addFortune(testFortune1);
         assertEquals(testFortuneLog.getFortune(0), "Topic: [Will it be sunny?] Result: [Heads]");
     }
 
     @Test
-    public void getFortuneTopicMultiple(){
+    public void getFortuneTopicMultiple() {
         testFortuneLog.addFortune(testFortune1);
         assertEquals(testFortuneLog.getFortune(0), "Topic: [Will it be sunny?] Result: [Heads]");
 
@@ -69,7 +70,7 @@ public class TestFortuneLog {
     }
 
     @Test
-    public void testGetGoodFortunes(){
+    public void testGetGoodFortunes() {
         testFortuneLog.addFortune(testFortune1);
         testFortuneLog.addFortune(testFortune2);
 
@@ -78,7 +79,7 @@ public class TestFortuneLog {
     }
 
     @Test
-    public void testGetGoodFortunesMultiples(){
+    public void testGetGoodFortunesMultiples() {
         testFortuneLog.addFortune(testFortune1);
         testFortuneLog.addFortune(testFortune2);
         testFortuneLog.addFortune(testFortune4);
@@ -89,7 +90,7 @@ public class TestFortuneLog {
     }
 
     @Test
-    public void testGetBadFortunes(){
+    public void testGetBadFortunes() {
         testFortuneLog.addFortune(testFortune1);
         testFortuneLog.addFortune(testFortune2);
 
@@ -98,7 +99,7 @@ public class TestFortuneLog {
     }
 
     @Test
-     public void testGetBadFortunesMultiples(){
+     public void testGetBadFortunesMultiples() {
         testFortuneLog.addFortune(testFortune1);
         testFortuneLog.addFortune(testFortune2);
         testFortuneLog.addFortune(testFortune3);

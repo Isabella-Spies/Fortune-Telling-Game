@@ -26,7 +26,7 @@ public class TestFortune {
     }
 
     @Test
-    void testRollFortune(){
+    void testRollFortune() {
         ArrayList<String> acceptedOutputs = new ArrayList<String>();
         acceptedOutputs.add("Heads");
         acceptedOutputs.add("Tails");
@@ -36,7 +36,7 @@ public class TestFortune {
     }
 
     @Test
-    void testRollFortuneMultiples(){
+    void testRollFortuneMultiples() {
         ArrayList<String> acceptedOutputs = new ArrayList<String>();
         acceptedOutputs.add("Heads");
         acceptedOutputs.add("Tails");
@@ -49,12 +49,12 @@ public class TestFortune {
     }
 
     @Test
-    void testInterpretFortuneHeads(){
+    void testInterpretFortuneHeads() {
         assertEquals(testFortune.interpretFortune(0), "Heads");
     }
 
     @Test
-    void testInterpretFortuneTails(){
+    void testInterpretFortuneTails() {
         assertEquals(testFortune.interpretFortune(1), "Tails");
     }
 

@@ -11,6 +11,7 @@ The project that I intend to design this term is a fortune telling game. Users w
 - I want to be able to see a list of fortunes with a good rating
 - I want to be able to see a list of fortunes with a bad rating
 - I want to be able to see a list of all fortunes and their results.
+- I want to be able to select a fortune and remove it from the list.
 
 - I want to have the option to save the Fortune Log
 - I want to have the option to reload the previous Fotune Log on start

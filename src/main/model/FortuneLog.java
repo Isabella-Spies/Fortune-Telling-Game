@@ -21,6 +21,13 @@ public class FortuneLog {
 
     // REQUIRES: index >= 0
     // MODIFIES: this
+    // EFFECTS: removes a fortune from the list at the given index
+    public void removeFortune(int index) {
+        // stub
+    }
+
+    // REQUIRES: index >= 0
+    // MODIFIES: this
     // EFFECTS: Gives the topic and result of a fortune at the given index
     public String getFortune(int index) {
         return fortuneList.get(index).toString();

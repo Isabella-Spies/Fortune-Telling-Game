@@ -1,0 +1,19 @@
+{
+    "fortuneList": [
+        {
+            "topic": "Will it rain?",
+            "result": "Heads",
+            "rating": false
+        },
+        {
+            "topic": "Will it be sunny?",
+            "result": "Tails",
+            "rating": true
+        },
+        {
+            "topic": "Will I pass?",
+            "result": "Tails",
+            "rating": true
+        }
+    ]
+}

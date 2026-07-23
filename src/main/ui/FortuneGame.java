@@ -74,6 +74,8 @@ public class FortuneGame {
         System.out.println("d. See fortunes with good ratings");
         System.out.println("f. See fortunes with bad ratings");
         System.out.println("g. Remove a fortune from the log");
+        System.out.println("z. Save current game");
+        System.out.println("x. Load previous game");
         System.out.println("q. Quit");
 
     }
@@ -90,6 +92,10 @@ public class FortuneGame {
         } else if (command.equals("f")) {
             return true;
         } else if (command.equals("g")) {
+            return true;
+        } else if (command.equals("z")) {
+            return true;
+        } else if (command.equals("x")) {
             return true;
         }
         return false;
@@ -211,6 +217,13 @@ public class FortuneGame {
         } catch (IOException e) {
             System.out.println("Unable to read from given file");
         }
+        doSeeAllFortunes();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Saves current data to JSON file
+    private void doSaveData() {
+        // stub
     }
 
     // REQUIRES: string != null
@@ -229,7 +242,7 @@ public class FortuneGame {
         } else if (command.equals("g")) {
             doRemoveFortunes();
         } else if (command.equals("z")) {
-            //Save Data
+            doSaveData();
         } else if (command.equals("x")) {
             doLoadFortuneLog();
         }

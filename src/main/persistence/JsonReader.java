@@ -61,7 +61,7 @@ public class JsonReader {
 
     // EFFETS: gets Fortune from JSONObject and adds it to FortuneList
     private void addFortune(FortuneLog fortuneLog, JSONObject jsonObject) {
-        String topic = jsonObject.getString("name");
+        String topic = jsonObject.getString("topic");
         String result = jsonObject.getString("result");
         boolean rating = jsonObject.getBoolean("rating");
         Fortune newFortune = new Fortune(topic, result, rating);

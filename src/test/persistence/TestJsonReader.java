@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExcludeFromJacocoGeneratedReport
 public class TestJsonReader extends TestJson {
     
     @Test

@@ -20,7 +20,7 @@ public class TestJsonWriter {
     @Test
     void testWriteToInvalidFile() {
         try {
-            JsonWriter writer = new JsonWriter("./data/noExist");
+            JsonWriter writer = new JsonWriter("./data/no\0:Exist.json");
             writer.open();
             fail("IOException expected");
         } catch (IOException e) {

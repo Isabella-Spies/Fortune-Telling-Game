@@ -3,10 +3,13 @@ package ui;
 import model.FortuneLog;
 import model.Fortune;
 import persistence.JsonReader;
+import persistence.JsonWriter;
+
 import java.util.Scanner;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -18,11 +21,13 @@ public class FortuneGame {
     private FortuneLog fortuneLog;
     private Scanner input;
     private JsonReader jasonReader;
+    private JsonWriter jasonWriter;
 
     public FortuneGame() {
         fortuneLog = new FortuneLog();
         input = new Scanner(System.in);
         jasonReader = new JsonReader(JSON_FILE);
+        jasonWriter = new JsonWriter(JSON_FILE);
         runFortuneGame();
     }
 
@@ -223,7 +228,15 @@ public class FortuneGame {
     // MODIFIES: this
     // EFFECTS: Saves current data to JSON file
     private void doSaveData() {
-        // stub
+        try {
+            jasonWriter.open();
+            jasonWriter.write(fortuneLog);
+            jasonWriter.close();
+            
+            System.out.println("Save game progress.");
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to fiile :(");
+        }
     }
 
     // REQUIRES: string != null

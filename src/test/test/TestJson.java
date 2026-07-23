@@ -1,4 +1,4 @@
-package persistence;
+package test;
 
 import org.junit.Test;
 import model.Fortune;

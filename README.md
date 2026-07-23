@@ -17,6 +17,8 @@ The project that I intend to design this term is a fortune telling game. Users w
 - I want to have the option to reload the previous Fotune Log on start
 - I want to be reminded to save my progress on quit and have the option to go back instead of quitting
 
+- I want to be able to choose between a card reading and coin flip when having my fortune read.
+
 
 ## Citations
 Basic Teller App: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git

@@ -1,4 +1,4 @@
-package model;
+package test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
+import model.Fortune;
+import model.FortuneLog;
 
 @ExcludeFromJacocoGeneratedReport
 public class TestFortuneLog {

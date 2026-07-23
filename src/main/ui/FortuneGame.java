@@ -42,20 +42,16 @@ public class FortuneGame {
             System.out.println();
             displayMenu(); 
             command = input.next();
-            command = command.toLowerCase();  
-                     
-            if (command.equals("q")) {
-                runGame = false;
-            } else {
-                while (!validCommand(command)) {
-                    System.out.println();
-                    System.out.println("invalid input. try again");
-                    displayMenu();
-                    command = input.next();
-                    command = command.toLowerCase();
-                }
-                processUserInput(command);
+            command = command.toLowerCase();      
+            while (!validCommand(command)) {
+                System.out.println();
+                System.out.println("invalid input. try again");
+                displayMenu();
+                command = input.next();
+                command = command.toLowerCase();
             }
+            runGame = isGameQuit(command);
+            processUserInput(command);
            
         }
 
@@ -85,6 +81,42 @@ public class FortuneGame {
 
     }
 
+    private boolean isGameQuit(String command) {
+        if (command.equals("q")) {
+            String i = "";
+            boolean notValid = true;
+            System.out.println("Have you saved recently?");
+            while(notValid) {
+                System.out.println("a. Go back");
+                System.out.println("s. Save and Quit");
+                System.out.println("q. Quit without saving");
+                i = input.next();
+                i.toLowerCase();
+                if (i.equals("a")) {
+                    notValid = false;
+                } else if (i.equals("s")) {
+                    notValid = false;
+                } else if (i.equals("q")) {
+                    notValid = false;
+                } else {
+                    System.out.println("invalid input. try again");
+                }
+            }
+
+            if (i.equals("a")) {
+                    return true;
+                } else if (i.equals("s")) {
+                    doSaveData();
+                    return false;
+                } else {
+                    return false;
+                }
+
+        } else {
+            return true;
+        }  
+    }
+
     // MODIFIES: this
     // EFFECTS: retruns true if given letter corresponds to a valid command
     private boolean validCommand(String command) {
@@ -101,6 +133,8 @@ public class FortuneGame {
         } else if (command.equals("z")) {
             return true;
         } else if (command.equals("x")) {
+            return true;
+        } else if (command.equals("q")) {
             return true;
         }
         return false;

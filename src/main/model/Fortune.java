@@ -7,10 +7,10 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 // Represents a fortune that has a topic, type, result, and rating
-public class Fortune implements Writable{
-    private String topic;
-    private String result;
-    private boolean rating;
+public abstract class Fortune implements Writable{
+    protected String topic;
+    protected String result;
+    protected boolean rating;
     private Random random = new Random();
 
 

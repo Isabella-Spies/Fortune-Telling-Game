@@ -1,8 +1,9 @@
-package persistence;
+package test;
 
 import model.FortuneLog;
+import persistence.JsonReader;
 import model.Fortune;
-import persistence.TestJson;
+
 import org.junit.jupiter.api.Test;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;

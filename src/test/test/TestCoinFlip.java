@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Test;
 import model.CoinFlip;
 import model.Fortune;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
+
+@ExcludeFromJacocoGeneratedReport
 public class TestCoinFlip {
     Fortune testFortune;
     Fortune testFortune2;

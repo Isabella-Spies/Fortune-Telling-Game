@@ -72,8 +72,31 @@ public class JsonReader {
     }
 
     // EFFECTS: reads and returns an array list of card names
-    public ArrayList<String> readCards() throws IOException {
-        return null; // stub
+    public ArrayList<String> readCards() {
+        try {
+            String jsonData = readFile(file);
+            JSONObject jsonObject = new JSONObject(jsonData);
+            return parseCardList(jsonObject); 
+        } catch (IOException e) {
+            return null;
+        }
+            
+    }
+
+    private ArrayList<String> parseCardList(JSONObject jsonObject) {
+        ArrayList<String> cards = new ArrayList<String>();
+        addCards(cards, jsonObject);
+        return cards;
+    }
+
+    private void addCards(ArrayList<String> cards, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("cardList");
+        for (Object Obj: jsonArray) {
+            JSONObject jObj = (JSONObject) Obj;
+            String card = jObj.getString("Card");
+            cards.add(card);
+        }
+
     }
 
 

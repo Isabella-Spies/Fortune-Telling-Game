@@ -1,6 +1,26 @@
 {
     "cardList" : [
-        "The Fool",
-        "The Magician"
+        {"Card" : "The Fool"},
+        {"Card": "The Magician"},
+        {"Card" : "The High Priestess"},
+        {"Card" : "The Empress"},
+        {"Card" : "The Emperor"},
+        {"Card" : "The Hierophant"},
+        {"Card" : "The Lovers"},
+        {"Card" : "The Chariot"},
+        {"Card" : "Strength"},
+        {"Card" : "The Hermit"},
+        {"Card" : "Wheel of Fortune"},
+        {"Card" : "Justice"},
+        {"Card" : "The Hanged Man"},
+        {"Card" : "Death"},
+        {"Card" : "Temperance"},
+        {"Card" : "The Devil"},
+        {"Card" : "The Tower"},
+        {"Card" : "The Star"},
+        {"Card" : "The Moon"},
+        {"Card" : "The Sun"},
+        {"Card" : "Judgement"},
+        {"Card" : "The World"}
     ]
 }

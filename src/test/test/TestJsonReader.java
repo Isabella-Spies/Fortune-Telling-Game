@@ -55,38 +55,29 @@ public class TestJsonReader extends TestJson {
         }
     }
 
-    @Test 
-    void testReaderNonExistentCardList() {
-        JsonReader jsonReader = new JsonReader("./data/illegal.json");
-        try {
-            ArrayList<String> cardList = jsonReader.readCards();
-            fail("IOException expected");
-        } catch (IOException e) {
-
-        }
+    @Test
+    void testReaderNonexistentCards() {
+        JsonReader jsonReader = new JsonReader("./data/nonExistent.json");
+        ArrayList<String> cardList = jsonReader.readCards();
+        assertEquals(null, cardList);
     }
 
     @Test
     void testReaderEmptyCardList() {
         JsonReader jsonReader = new JsonReader("./data/testEmptyCardListReader.json");
-        try {
-            ArrayList<String> cardList = jsonReader.readCards();
-            assertEquals(0, cardList.size());
-        } catch (IOException e) {
-            fail("IOException should not occur");
-        }
+        ArrayList<String> cardList = jsonReader.readCards();
+        assertNotEquals(null, cardList);
+        assertEquals(0, cardList.size());
+        
     }
 
     @Test
     void testReaderCardList() {
-        JsonReader jsonReader = new JsonReader("./data/testEmptyCardListReader.json");
-        try {
+        JsonReader jsonReader = new JsonReader("./data/cardList.json");
             ArrayList<String> cardList = jsonReader.readCards();
-            assertEquals(2, cardList.size());
+            assertNotEquals(null, cardList);
+            assertEquals(22, cardList.size());
             assertEquals("The Fool", cardList.get(0));
             assertEquals("The Magician", cardList.get(1));
-        } catch (IOException e) {
-            fail("IOException should not occur");
-        }
     }
 }

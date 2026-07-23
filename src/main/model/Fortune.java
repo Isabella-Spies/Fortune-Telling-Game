@@ -2,8 +2,12 @@ package model;
 
 import java.util.Random;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // Represents a fortune that has a topic, type, result, and rating
-public class Fortune {
+public class Fortune implements Writable{
     private String topic;
     private String result;
     private boolean rating;
@@ -77,5 +81,15 @@ public class Fortune {
     public String toString() {
         return "Topic: [" + topic + "] Result: [" + result + "]";
     }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("topic", topic);
+        json.put("result", result);
+        json.put("rating", rating);
+        return json;
+    }
+
 
 }

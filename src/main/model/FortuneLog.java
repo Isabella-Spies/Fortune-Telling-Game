@@ -2,8 +2,12 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents a log of previous Fortunes 
-public class FortuneLog {
+public class FortuneLog implements Writable{
     private ArrayList<Fortune> fortuneList;
 
     // MODIFIES: this
@@ -59,6 +63,24 @@ public class FortuneLog {
 
     public ArrayList<Fortune> getFortuneList() {
         return fortuneList;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("fortuneList", fortunesToJson());
+        return json;
+    }
+
+    // EFFECTS: converts fortuneList to JSON Array to be saved
+    private JSONArray fortunesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Fortune fortune: fortuneList) {
+            jsonArray.put(fortune.toJson());
+        }
+
+        return jsonArray;
     }
     
 }

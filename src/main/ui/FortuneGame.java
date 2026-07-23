@@ -1,6 +1,7 @@
 package ui;
 
 import model.FortuneLog;
+import model.CoinFlip;
 import model.Fortune;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -148,7 +149,7 @@ public class FortuneGame {
         input.nextLine();
         String command = input.nextLine();
 
-        Fortune fortune = new Fortune(command);
+        Fortune fortune = new CoinFlip(command);
         System.out.println();
         fortune.rollFortune();
         System.out.println("The result is " + fortune.getResult() + "!");

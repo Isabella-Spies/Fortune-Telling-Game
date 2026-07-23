@@ -2,7 +2,9 @@ package test;
 
 import model.FortuneLog;
 import persistence.JsonWriter;
+import model.CoinFlip;
 import model.Fortune;
+import persistence.JsonReader;
 
 import org.junit.jupiter.api.Test;
 
@@ -54,9 +56,9 @@ public class TestJsonWriter {
             JsonWriter myWriter = new JsonWriter("./data/testEmptyFLWriter.json");
             FortuneLog testFortuneLog = new FortuneLog();
             
-            Fortune fortune1 = new Fortune("Will he text me back?", "Heads", false);
-            Fortune fortune2 = new Fortune("Are Melanie and Sincere still together?", "Tails", true);
-            Fortune fortune3 = new Fortune("Am I doing this right?", "Heads", true);
+            Fortune fortune1 = new CoinFlip("Will he text me back?", "Heads", false);
+            Fortune fortune2 = new CoinFlip("Are Melanie and Sincere still together?", "Tails", true);
+            Fortune fortune3 = new CoinFlip("Am I doing this right?", "Heads", true);
             testFortuneLog.addFortune(fortune1);
             testFortuneLog.addFortune(fortune2);
             testFortuneLog.addFortune(fortune3);

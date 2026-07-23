@@ -27,6 +27,8 @@ public class TestJsonReader extends TestJson {
         }
     }
 
+    
+
     @Test
     void testReaderEmptyFortuneLog() {
         JsonReader reader = new JsonReader("./data/testEmptyFLReader.json");
@@ -50,6 +52,41 @@ public class TestJsonReader extends TestJson {
             checkFortuneCorrectness("Will I pass?", "Tails", true, fortunes.get(2));
         } catch (IOException e) {
             fail("Error in reading file");
+        }
+    }
+
+    @Test 
+    void testReaderNonExistentCardList() {
+        JsonReader jsonReader = new JsonReader("./data/illegal.json");
+        try {
+            ArrayList<String> cardList = jsonReader.readCards();
+            fail("IOException expected");
+        } catch (IOException e) {
+
+        }
+    }
+
+    @Test
+    void testReaderEmptyCardList() {
+        JsonReader jsonReader = new JsonReader("./data/testEmptyCardListReader.json");
+        try {
+            ArrayList<String> cardList = jsonReader.readCards();
+            assertEquals(0, cardList.size());
+        } catch (IOException e) {
+            fail("IOException should not occur");
+        }
+    }
+
+    @Test
+    void testReaderCardList() {
+        JsonReader jsonReader = new JsonReader("./data/testEmptyCardListReader.json");
+        try {
+            ArrayList<String> cardList = jsonReader.readCards();
+            assertEquals(2, cardList.size());
+            assertEquals("The Fool", cardList.get(0));
+            assertEquals("The Magician", cardList.get(1));
+        } catch (IOException e) {
+            fail("IOException should not occur");
         }
     }
 }

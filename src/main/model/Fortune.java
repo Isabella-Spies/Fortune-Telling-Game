@@ -11,7 +11,7 @@ public abstract class Fortune implements Writable{
     protected String topic;
     protected String result;
     protected boolean rating;
-    private Random random = new Random();
+    protected Random random = new Random();
 
 
     // REQUIRES: topic has a non zero length
@@ -36,23 +36,13 @@ public abstract class Fortune implements Writable{
     }
 
     // MODIFIES: this
-    // EFFECTS: rolls and returns a random fortune
-    //          picks between 0 and 1 for heads or tails
-    public void rollFortune() {
-        int flip = random.nextInt(2);
-        result = interpretFortune(flip);
-    }
+    // EFFECTS: rolls and returns a random fortunes
+    public abstract void rollFortune();
 
     // REQUIRES: flip >= 0
     // MODIFIES: this
     // EFFECTS: turns the flip result into a fortune
-    public String interpretFortune(int flip) {
-        if (flip == 1) {
-            return "Tails";
-        } else {
-            return "Heads";
-        }
-    }
+    public abstract String interpretFortune(int flip);
 
     public String getTopic() {
         // stub

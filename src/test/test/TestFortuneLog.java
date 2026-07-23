@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
+import model.CoinFlip;
 import model.Fortune;
 import model.FortuneLog;
 
@@ -24,10 +25,10 @@ public class TestFortuneLog {
     void runBefore() {
         testFortuneLog = new FortuneLog();
 
-        testFortune1 = new Fortune("Will it be sunny?");
-        testFortune2 = new Fortune("Will it be rainy?");
-        testFortune3 = new Fortune("Will it be cloudy?");
-        testFortune4 = new Fortune("Will it be windy?");
+        testFortune1 = new CoinFlip("Will it be sunny?");
+        testFortune2 = new CoinFlip("Will it be rainy?");
+        testFortune3 = new CoinFlip("Will it be cloudy?");
+        testFortune4 = new CoinFlip("Will it be windy?");
 
         testFortune1.setRating(false);
         testFortune2.setRating(true);

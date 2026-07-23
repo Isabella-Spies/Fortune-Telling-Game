@@ -1,5 +1,6 @@
 package persistence;
 
+import model.CoinFlip;
 import model.Fortune;
 import model.FortuneLog;
 
@@ -7,6 +8,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.stream.Stream;
 
 import org.json.*;
@@ -64,10 +66,17 @@ public class JsonReader {
         String topic = jsonObject.getString("topic");
         String result = jsonObject.getString("result");
         boolean rating = jsonObject.getBoolean("rating");
-        Fortune newFortune = new Fortune(topic, result, rating);
+        Fortune newFortune = new CoinFlip(topic, result, rating);
 
         fortuneLog.addFortune(newFortune);
     }
+
+    // EFFECTS: reads and returns an array list of card names
+    public ArrayList<String> readCards() throws IOException {
+        return null; // stub
+    }
+
+
 
 
 

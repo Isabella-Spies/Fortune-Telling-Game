@@ -11,7 +11,6 @@ public class Fortune {
 
 
     // REQUIRES: topic has a non zero length
-    //           type must be >= 0
     // MODIFIES: this
     // EFFECTS: given topic is set to fortune topic, 
     //          given type is set to fortune type, result is empty
@@ -19,6 +18,17 @@ public class Fortune {
     public Fortune(String topic) {
         this.topic = topic;
         this.rating = false;
+    }
+
+    // REQUIRES: topic and result has non zero length
+    // MODIFIES: this
+    // EFFECTS: Constructor to be used by Reader when initializing
+    // from JSON data.
+    // given parameters are set to their corresponding fields
+    public Fortune(String topic, String result, boolean rating) {
+        this.topic = topic;
+        this.result = result;
+        this.rating = rating;
     }
 
     // MODIFIES: this

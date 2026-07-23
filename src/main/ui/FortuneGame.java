@@ -2,22 +2,27 @@ package ui;
 
 import model.FortuneLog;
 import model.Fortune;
+import persistence.JsonReader;
 import java.util.Scanner;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
 // Fortune game application
 @ExcludeFromJacocoGeneratedReport
 public class FortuneGame {
+    private static final String JSON_FILE = "./data/fortunelog.json";
     private FortuneLog fortuneLog;
     private Scanner input;
+    private JsonReader jasonReader;
 
     public FortuneGame() {
         fortuneLog = new FortuneLog();
         input = new Scanner(System.in);
+        jasonReader = new JsonReader(JSON_FILE);
         runFortuneGame();
     }
 
@@ -197,6 +202,17 @@ public class FortuneGame {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: Loads fortune log from JSON data
+    private void doLoadFortuneLog() {
+        try {
+            fortuneLog = jasonReader.read();
+            System.out.println("Loaded Previous Game from: " + JSON_FILE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from given file");
+        }
+    }
+
     // REQUIRES: string != null
     // MODIFIES: this
     // EFFECTS: runs different processes based on given user input
@@ -212,6 +228,10 @@ public class FortuneGame {
             doSeeBadFortunes();
         } else if (command.equals("g")) {
             doRemoveFortunes();
+        } else if (command.equals("z")) {
+            //Save Data
+        } else if (command.equals("x")) {
+            doLoadFortuneLog();
         }
     }
 }

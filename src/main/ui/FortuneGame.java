@@ -177,9 +177,7 @@ public class FortuneGame {
     // EFFECTS: takes user input, rolls cards, adds to fortune list
     private void doCardRead() {
         System.out.println("What is your question for the cards?");
-        input.nextLine();
         String command = input.nextLine();
-
         Fortune fortune = new CardReading(command);
         System.out.println();
         fortune.rollFortune();

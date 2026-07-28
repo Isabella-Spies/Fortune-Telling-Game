@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 // Represents a log of previous Fortunes 
-public class FortuneLog implements Writable{
+public class FortuneLog implements Writable {
     private ArrayList<Fortune> fortuneList;
 
     // MODIFIES: this

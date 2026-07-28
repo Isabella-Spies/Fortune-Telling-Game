@@ -11,8 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import model.CardReading;
-import model.CoinFlip;
-import model.Fortune;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
@@ -86,6 +84,25 @@ public class TestCardReading {
                 prev = integer;
             }
         }
+    }
+
+    @Test
+    void testMakeRoll() {
+        ArrayList<Integer> testResults = new ArrayList<Integer>();
+        testResults.add(3);
+        testResults.add(7);
+
+        int roll = testFortune.makeRoll(testResults);
+        assertTrue(roll >= 0);
+        assertTrue(roll < 23);
+
+        int prev = testResults.get(0);
+        for (int i = 1; i < testResults.size(); i++) {
+            if (prev == testResults.get(i)) {
+                fail();
+            }
+        }
+
     }
 
     @Test

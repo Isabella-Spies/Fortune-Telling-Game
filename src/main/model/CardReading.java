@@ -1,6 +1,5 @@
 package model;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import persistence.JsonReader;
 
@@ -38,17 +37,23 @@ public class CardReading extends Fortune {
     public void rollFortune() {
         ArrayList<Integer> results = new ArrayList<Integer>();
         for (int i = 0; i < 3; i++) {
-            int roll = random.nextInt(0,22);
-                while (results.contains(roll)) {
-                    roll = random.nextInt(0,22);
-                }
+            int roll = makeRoll(results);
             results.add(roll);
         }
-
         this.resultNums = results;
         this.result = interpretResults(results);
     }
 
+    // MODIFIES: this
+    // rolls the fortune and re-rolls if it is a duplicate
+    public Integer makeRoll(ArrayList<Integer> results) {
+        int roll = random.nextInt(22);
+        if (results.contains(roll)) {
+            return makeRoll(results);
+        } else {
+            return roll;
+        }
+    }
 
 
     // REQUIRES: results.size() > 0

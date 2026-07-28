@@ -1,6 +1,7 @@
 package ui;
 
 import model.FortuneLog;
+import model.CardReading;
 import model.CoinFlip;
 import model.Fortune;
 import persistence.JsonReader;
@@ -144,12 +145,52 @@ public class FortuneGame {
     // MODIFIES: this
     // EFFECTS: makes a fortune and rolls result
     private void doFortuneTelling() {
-        System.out.println("The fortune teller will answer by flipping a coin.");
-        System.out.println("What is you question for the fortune teller?");
+        System.out.println("The fortune teller can answer by flipping a coin or drawing three cards");
+        boolean bad = true;
+        String reading = "";
+        while (bad) {
+            System.out.println("Would you like:");
+            System.out.println("a. Coin Flip");
+            System.out.println("s. Card reading");
+            reading = input.nextLine();
+            if (reading.equals("a") || reading.equals("s")) {
+                bad = false;
+            } else {
+                System.out.println("Bad input please try again");
+            }
+        }
+
+        if (reading.equals("a")) {
+            doCoinFlip();
+        } else {
+            doCardRead();
+        }
+    }
+
+
+    // MODIFIES: this
+    // EFFECTS: takes user input, rolls the coin flip, adds it to fortune list
+    private void doCoinFlip() {
+        System.out.println("What is your question for the fortune teller?");
         input.nextLine();
         String command = input.nextLine();
 
         Fortune fortune = new CoinFlip(command);
+        System.out.println();
+        fortune.rollFortune();
+        System.out.println("The result is " + fortune.getResult() + "!");
+        fortuneLog.addFortune(fortune);
+        rateFortuneResult(fortune);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: takes user input, rolls cards, adds to fortune list
+    private void doCardRead() {
+        System.out.println("What is your question for the cards?");
+        input.nextLine();
+        String command = input.nextLine();
+
+        Fortune fortune = new CardReading(command);
         System.out.println();
         fortune.rollFortune();
         System.out.println("The result is " + fortune.getResult() + "!");

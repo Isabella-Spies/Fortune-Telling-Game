@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 // Represents a fortune that has a topic, type, result, and rating
-public abstract class Fortune implements Writable{
+public abstract class Fortune implements Writable {
     protected String topic;
     protected String result;
     protected boolean rating;
@@ -45,17 +45,14 @@ public abstract class Fortune implements Writable{
     public abstract String interpretFortune(int flip);
 
     public String getTopic() {
-        // stub
         return topic;
     }
 
     public String getResult() {
-        // stub
         return result;
     }
 
     public boolean getRating() {
-        // stub
         return rating;
     }
 

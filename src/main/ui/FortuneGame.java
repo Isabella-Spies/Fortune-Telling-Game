@@ -138,6 +138,7 @@ public class FortuneGame {
         System.out.println("The fortune teller can answer by flipping a coin or drawing three cards");
         boolean bad = true;
         String reading = "";
+        input.nextLine();
         while (bad) {
             System.out.println("Would you like:");
             System.out.println("a. Coin Flip");

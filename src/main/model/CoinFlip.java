@@ -1,5 +1,6 @@
 package model;
 
+// represents a fortune as a coin flip
 public class CoinFlip extends Fortune {
 
 

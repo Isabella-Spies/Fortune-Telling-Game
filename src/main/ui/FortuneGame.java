@@ -83,6 +83,9 @@ public class FortuneGame {
 
     }
 
+
+    // MODIFIES: this
+    // EFFECTS: checks if the user would like to quit, save and quit or go back
     private boolean isGameQuit(String command) {
         if (command.equals("q")) {
             System.out.println("Have you saved recently?");
@@ -163,9 +166,7 @@ public class FortuneGame {
     // EFFECTS: takes user input, rolls the coin flip, adds it to fortune list
     private void doCoinFlip() {
         System.out.println("What is your question for the fortune teller?");
-        input.nextLine();
         String command = input.nextLine();
-
         Fortune fortune = new CoinFlip(command);
         System.out.println();
         fortune.rollFortune();
@@ -187,6 +188,8 @@ public class FortuneGame {
         rateFortuneResult(fortune);
     }
 
+
+    // EFFECTS: allows user to rate the fortune they got
     private void rateFortuneResult(Fortune fortune) {
         System.out.println();
         System.out.println("Rate the result:");

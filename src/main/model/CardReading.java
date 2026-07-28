@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import persistence.JsonReader;
 
+// represents a Fortune as a card reading
 public class CardReading extends Fortune {
 
     private static String FILE_PATH = "./data/cardList.json";

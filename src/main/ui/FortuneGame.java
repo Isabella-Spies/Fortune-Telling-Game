@@ -85,35 +85,25 @@ public class FortuneGame {
 
     private boolean isGameQuit(String command) {
         if (command.equals("q")) {
-            String i = "";
-            boolean notValid = true;
             System.out.println("Have you saved recently?");
-            while(notValid) {
-                System.out.println("a. Go back");
-                System.out.println("s. Save and Quit");
-                System.out.println("q. Quit without saving");
-                i = input.next();
-                i.toLowerCase();
-                if (i.equals("a")) {
-                    notValid = false;
-                } else if (i.equals("s")) {
-                    notValid = false;
-                } else if (i.equals("q")) {
-                    notValid = false;
-                } else {
-                    System.out.println("invalid input. try again");
-                }
-            }
+            System.out.println("a. Go back");
+            System.out.println("s. Save and Quit");
+            System.out.println("q. Quit without saving");
+            ArrayList<String> accepted = new ArrayList<String>();
+            accepted.add("a");
+            accepted.add("s");
+            accepted.add("q");
+            String init = input.next();
+            String i = validateInput(init, accepted);
 
             if (i.equals("a")) {
-                    return true;
-                } else if (i.equals("s")) {
-                    doSaveData();
-                    return false;
-                } else {
-                    return false;
-                }
-
+                return true;
+            } else if (i.equals("s")) {
+                doSaveData();
+                return false;
+            } else {
+                return false;
+            }
         } else {
             return true;
         }  
@@ -267,18 +257,18 @@ public class FortuneGame {
             doSeeAllFortunes();
             boolean notValid = true;
             while (notValid) {
-            System.out.println("Input the number of the fortune that you would like to remove:");
-            input.nextLine();
-            int index = input.nextInt();
-            if (index >= 1 && index <= listOfFortunes.size()) {
-                System.out.println("Fortune Number " + index + " was removed.");
-                index--;
-                fortuneLog.removeFortune(index);
-                notValid = false;
-            } else {
-                System.out.println("Invalid number.");
-                System.out.println("");
-            }
+                System.out.println("Input the number of the fortune that you would like to remove:");
+                input.nextLine();
+                int index = input.nextInt();
+                if (index >= 1 && index <= listOfFortunes.size()) {
+                    System.out.println("Fortune Number " + index + " was removed.");
+                    index--;
+                    fortuneLog.removeFortune(index);
+                    notValid = false;
+                } else {
+                    System.out.println("Invalid number.");
+                    System.out.println("");
+                }
             }
             
 
@@ -334,6 +324,20 @@ public class FortuneGame {
             doSaveData();
         } else if (command.equals("x")) {
             doLoadFortuneLog();
+        }
+    }
+
+    // REQUIRES: accepted.size() > 0
+    // MODIFIES: this
+    // EFFECTS: checks that the given input is within the given accepted inputs
+    // retakes input if not accpted
+    public String validateInput(String in, ArrayList<String> accepted) {
+        if (accepted.contains(in)) {
+            return in;
+        } else {
+            System.out.println("Invalid input. Please try again.");
+            String again = input.next();
+            return validateInput(again, accepted);
         }
     }
 }

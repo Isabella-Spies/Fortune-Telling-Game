@@ -1,4 +1,5 @@
 package persistence;
+
 import model.FortuneLog;
 import org.json.JSONObject;
 

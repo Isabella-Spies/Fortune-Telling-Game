@@ -29,7 +29,7 @@ public class JsonReader {
     // Will throw an IOException if a data read error occurs
     public FortuneLog read() throws IOException {
         String jsonData = readFile(file);
-        JSONObject jsonObject= new JSONObject(jsonData);
+        JSONObject jsonObject = new JSONObject(jsonData);
         return parseFortuneLog(jsonObject); // stub
     }
 
@@ -91,9 +91,9 @@ public class JsonReader {
 
     private void addCards(ArrayList<String> cards, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("cardList");
-        for (Object Obj: jsonArray) {
-            JSONObject jObj = (JSONObject) Obj;
-            String card = jObj.getString("Card");
+        for (Object obj: jsonArray) {
+            JSONObject jobj = (JSONObject) obj;
+            String card = jobj.getString("Card");
             cards.add(card);
         }
 

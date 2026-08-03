@@ -10,6 +10,8 @@ import java.util.Scanner;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -45,14 +47,12 @@ public class FortuneGameApp {
         frame = new JFrame("Fortune Game");
         gameActions = new ArrayList<GameAction>();
         fortuneLogPanel = new JPanel();
-        fortuneScrollPane = new JScrollPane();
-
+        fortuneScrollPane = new JScrollPane(fortuneLogPanel);
         runFortuneGame();
     }
 
     // Starts the app
     private void runFortuneGame() {
-        initializeGameActions();
         initializeStartingVeiw();
     }
 
@@ -62,46 +62,44 @@ public class FortuneGameApp {
         defaultGraphics();
         initializeFortuneArea();
         initializeGameActions();
+        frame.revalidate();
     }
 
     private void initializeFortuneArea() {
-        fortuneLogPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        fortuneLogPanel.setLayout(new GridLayout(0, 1));
-        fortuneLogPanel.setSize(new Dimension(0, 0));
-        frame.add(fortuneLogPanel, BorderLayout.CENTER);
-        fortuneLogPanel.add(fortuneScrollPane);
-        fortuneScrollPane.setMaximumSize(new Dimension(0,0));
-        updateFortuneArea();
+        fortuneScrollPane.setPreferredSize(new Dimension(0, 0));
+        fortuneScrollPane.setBorder(new LineBorder(Color.black));
+        frame.add(fortuneScrollPane, BorderLayout.CENTER);
+        fortuneLogPanel.setLayout(new BoxLayout(fortuneLogPanel, BoxLayout.Y_AXIS));
+
+        initializeFortunes(fortuneLogPanel);
     }
 
-    private void updateFortuneArea() {
-        fortuneScrollPane = initializeFortuneZone(fortuneScrollPane);
-    }
+    // REQUIRES: parentPanel == FortuneLogPanel
+    // MODIFIES: this
+    // EFFECTS: creates the panels for the fortunes and adds them to the scrollPane
+    private void initializeFortunes(JPanel parentPanel) {
+        parentPanel.removeAll();
 
-    private JScrollPane initializeFortuneZone(JScrollPane scrollPane) {
-        for (Fortune fortune: fortuneLog.getFortuneList()) {
-            
-            JLabel topicLabel = new JLabel(fortune.getTopic());
-            JLabel resultLabel = new JLabel(fortune.getResult());
-            
-            scrollPane.add(topicLabel);
-            scrollPane.add(resultLabel);
+        for (Fortune fortune : fortuneLog.getFortuneList()) {
+            initializeFortune(fortune, parentPanel);
+            System.out.println(fortune.getTopic());
         }
-        return scrollPane;
     }
 
-    private JPanel initializeFortune(Fortune fortune) {
-        JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout());
-        //topicLabel.setMaximumSize(new Dimension(0, 0));
-        // topicLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        JLabel resultLabel = new JLabel(fortune.getResult());
-        resultLabel.setMaximumSize(new Dimension(0,0));
-        //topicLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        //panel.add(topicLabel);
-        panel.add(resultLabel);
+    private void initializeFortune(Fortune fortune, JPanel parentPanel) {
+        JPanel fortunePanel = new JPanel();
+        fortunePanel.setLayout(new BoxLayout(fortunePanel, BoxLayout.Y_AXIS));
+        //fortunePanel.setPreferredSize(new Dimension(500, 5));
+        fortunePanel.setBorder(new EtchedBorder());
 
-        return panel;
+        //String topicString = fortune.getTopic();
+        //String resultString = fortune.getResult();
+        JLabel topic = new JLabel("Hello");
+        JLabel result = new JLabel("World");
+        fortunePanel.add(topic);
+        fortunePanel.add(result);
+        parentPanel.add(fortunePanel);
+        parentPanel.revalidate();
     }
 
 
@@ -130,7 +128,7 @@ public class FortuneGameApp {
         try {
             fortuneLog = jasonReader.read();
             System.out.println("Loaded Previous Game from: " + JSON_FILE);
-            updateFortuneArea();
+            initializeFortunes(fortuneLogPanel);
         } catch (IOException e) {
             System.out.println("Unable to read from given file");
         }
@@ -146,6 +144,7 @@ public class FortuneGameApp {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
         frame.add(panel, BorderLayout.PAGE_END);
+        panel.setAlignmentY(SwingConstants.SOUTH);
 
         LoadGame loadGame = new LoadGame(this, panel);
         gameActions.add(loadGame);
@@ -157,12 +156,16 @@ public class FortuneGameApp {
         frame.setLayout(new BorderLayout());
         frame.setBackground(BG_COLOR);
         frame.setSize(WIDTH, HEIGHT);
+        frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
         JLabel text = new JLabel("Welcome to The Fortune Game!");
+        // text.setAlignmentX(SwingConstants.CENTER);
+        // text.setAlignmentY(SwingConstants.TOP);
         
         frame.add(text, BorderLayout.PAGE_START);
+
     }
 }

@@ -1,12 +1,17 @@
 {"fortuneList": [
     {
-        "result": "Heads",
-        "rating": false,
+        "result" : "Heads",
+        "rating": true,
         "topic": "Will it rain?"
     },
     {
-        "result": "Tails",
-        "rating": true,
-        "topic": "Will it be sunny?"
+        "result" : "Tails",
+        "rating" : false,
+        "topic" : "Will it be sunny?"
+    },
+    {
+        "result" : "The Magician, The Star, The Sun",
+        "rating" : true,
+        "Topic" : "Does the UI look good?"
     }
 ]}

@@ -34,6 +34,9 @@ public class FortuneGameApp {
     public static final Color BG_COLOR = new Color(47, 36, 102);
     public static final Color TEXT_COLOR = new Color(255, 248, 212);
 
+    public static final ImageIcon HEADS_IMAGE = new ImageIcon("./data/Images/Heads.png");
+    public static final ImageIcon TAILS_IMAGE = new ImageIcon("./data/Images/Tails.png");
+
     private JFrame frame;
     private JPanel fortuneLogPanel;
     private JScrollPane fortuneScrollPane;
@@ -104,11 +107,28 @@ public class FortuneGameApp {
 
         String topicString = fortune.getTopic();
         String resultString = fortune.getResult();
-        JLabel topic = new JLabel(topicString);
-        JLabel result = new JLabel(resultString);
+        JLabel topic = new JLabel("Topic: " + topicString);
+        JLabel result = new JLabel("Result: " + resultString);
         fortunePanel.add(topic);
         fortunePanel.add(result);
+        JLabel imageIcon = addImage(resultString);
+        if (imageIcon != null) {
+            fortunePanel.add(imageIcon);
+        }
         parentPanel.add(fortunePanel);
+    }
+
+    private JLabel addImage(String result) {
+        switch(result) {
+            case "Heads":
+                return new JLabel(HEADS_IMAGE);
+            
+            case "Tails":
+                return new JLabel(TAILS_IMAGE);
+
+            default:
+                return null;
+        }
     }
 
 
@@ -198,7 +218,6 @@ public class FortuneGameApp {
     // EFFECTS: Initializes the graphics that don't change from panel to panel
     private void defaultGraphics() {
         frame.setLayout(new BorderLayout());
-        frame.setBackground(BG_COLOR);
         frame.setSize(WIDTH, HEIGHT);
         frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));
         

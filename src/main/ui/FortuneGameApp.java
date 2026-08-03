@@ -78,21 +78,22 @@ public class FortuneGameApp {
         fortuneScrollPane.setBorder(new LineBorder(Color.black));
         frame.add(fortuneScrollPane, BorderLayout.CENTER);
         fortuneLogPanel.setLayout(new BoxLayout(fortuneLogPanel, BoxLayout.Y_AXIS));
+        fortuneLogPanel.setBackground(BG_COLOR);
 
         // initializeFortunes(fortuneLogPanel, fortuneLog.getFortuneList());
         doSeeAllFortunes();
     }
 
-    // REQUIRES: parentPanel == FortuneLogPanel
+    // REQUIRES: parentPanel == FortuneLogPanel, 0 <= type <=2
     // MODIFIES: this
     // EFFECTS: creates the panels for the fortunes and adds them to the scrollPane
-    private void initializeFortunes(JPanel parentPanel, ArrayList<Fortune> fortunes) {
+    private void initializeFortunes(JPanel parentPanel, ArrayList<Fortune> fortunes, int type) {
         parentPanel.removeAll();
         parentPanel.revalidate();
         parentPanel.repaint();
 
         for (Fortune fortune : fortunes) {
-            initializeFortune(fortune, parentPanel);
+            initializeFortune(fortune, parentPanel, type);
             System.out.println(fortune.getTopic());
             System.out.println(fortunes.size());
         }
@@ -102,8 +103,9 @@ public class FortuneGameApp {
     // REQUIRES: fortune != null, parentPanel != null
     // MODIFIES: this
     // EFFECTS: creates the fortune UI
-    private void initializeFortune(Fortune fortune, JPanel parentPanel) {
+    private void initializeFortune(Fortune fortune, JPanel parentPanel, int type) {
         JPanel fortunePanel = new JPanel();
+        determineBackgroundColor(fortunePanel, type);
         fortunePanel.setLayout(new BoxLayout(fortunePanel, BoxLayout.Y_AXIS));
         //fortunePanel.setPreferredSize(new Dimension(500, 5));
         fortunePanel.setBorder(new EtchedBorder());
@@ -119,6 +121,21 @@ public class FortuneGameApp {
             fortunePanel.add(imageIcon);
         }
         parentPanel.add(fortunePanel);
+    }
+
+    // EFFECTS: Determines the background color
+    private void determineBackgroundColor(JPanel fortunePanel, int type) {
+        switch (type) {
+            case 1:
+                fortunePanel.setBackground(Color.GREEN);
+                break;
+            case 2:
+                fortunePanel.setBackground(Color.RED);
+                break;
+            default:
+                fortunePanel.setBackground(Color.WHITE);
+                break;
+        }
     }
 
     // EFFECTS: adds images to coin flips
@@ -167,17 +184,17 @@ public class FortuneGameApp {
     // MODIFIES: this
     // EFFECTS: Updates the fortuneLogPanel to show only good rated fortunes
     public void doSeeGoodFortunes() {
-        initializeFortunes(fortuneLogPanel, fortuneLog.getGoodFortunes());
+        initializeFortunes(fortuneLogPanel, fortuneLog.getGoodFortunes(), 1);
     }
 
     // MODIFIES: this
     // EFFECTS: Updates the fortuneLogPanel to show only bad rated fortunes
     public void doSeeBadFortunes() {
-        initializeFortunes(fortuneLogPanel, fortuneLog.getBadFortunes());
+        initializeFortunes(fortuneLogPanel, fortuneLog.getBadFortunes(), 2);
     }
 
     public void doSeeAllFortunes() {
-        initializeFortunes(fortuneLogPanel, fortuneLog.getFortuneList());
+        initializeFortunes(fortuneLogPanel, fortuneLog.getFortuneList(), 0);
     }
 
     // MODIFIES: this
@@ -198,6 +215,7 @@ public class FortuneGameApp {
     private void initializeGameActions() {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+        panel.setBackground(BG_COLOR);
         frame.add(panel, BorderLayout.PAGE_END);
         panel.setAlignmentY(SwingConstants.SOUTH);
 

@@ -135,7 +135,7 @@ public class FortuneGameApp {
     }
 
     private void doQuitGame() {
-
+        System.exit(0);
     }
 
     // Adds avalible actions to the list of game actions
@@ -158,7 +158,7 @@ public class FortuneGameApp {
         frame.setSize(WIDTH, HEIGHT);
         frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));
         
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation();
         frame.setVisible(true);
 
         JLabel text = new JLabel("Welcome to The Fortune Game!");

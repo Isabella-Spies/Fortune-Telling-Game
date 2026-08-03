@@ -19,6 +19,20 @@ The project that I intend to design this term is a fortune telling game. Users w
 
 - I want to be able to choose between a card reading and coin flip when having my fortune read.
 
+## Instructions for End User
+How to view the panel that displays fortunes that have already been added to the fortune log:
+- It is the panel in the center.
+- If no fortunes are there, click the load button
+
+How to view all of the good rated fortunes:
+
+How to view all of the bad rated fortunes:
+
+How to load the state of the application from file:
+
+How to save the state of the application to file:
+
+
 
 ## Citations
 Basic Teller App: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git

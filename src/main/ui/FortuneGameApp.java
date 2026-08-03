@@ -4,6 +4,7 @@ import model.FortuneLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 import ui.GameActions.GameAction;
+import ui.GameActions.LoadGame;
 
 import java.util.Scanner;
 
@@ -12,6 +13,7 @@ import javax.swing.border.Border;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
@@ -59,13 +61,16 @@ public class FortuneGameApp {
     private void initializeStartingVeiw() {
         defaultGraphics();
         initializeFortuneArea();
-        intitializeButtons();
+        initializeGameActions();
     }
 
     private void initializeFortuneArea() {
         fortuneLogPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        fortuneLogPanel.setLayout(new GridLayout(0, 1));
+        fortuneLogPanel.setSize(new Dimension(0, 0));
         frame.add(fortuneLogPanel, BorderLayout.CENTER);
         fortuneLogPanel.add(fortuneScrollPane);
+        fortuneScrollPane.setMaximumSize(new Dimension(0,0));
         updateFortuneArea();
     }
 
@@ -73,61 +78,62 @@ public class FortuneGameApp {
         fortuneScrollPane = initializeFortuneZone(fortuneScrollPane);
     }
 
-    private void intitializeButtons() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setBackground(BG_COLOR);
-        panel.setSize(50, 50);
-        frame.add(panel, BorderLayout.PAGE_END);
-    }
-
     private JScrollPane initializeFortuneZone(JScrollPane scrollPane) {
         for (Fortune fortune: fortuneLog.getFortuneList()) {
-            JPanel panel = initializeFortune(fortune);
-            scrollPane.add(panel);
+            
+            JLabel topicLabel = new JLabel(fortune.getTopic());
+            JLabel resultLabel = new JLabel(fortune.getResult());
+            
+            scrollPane.add(topicLabel);
+            scrollPane.add(resultLabel);
         }
         return scrollPane;
     }
 
     private JPanel initializeFortune(Fortune fortune) {
         JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setBorder(BorderFactory.createEtchedBorder(0));
-
-        JLabel topicLabel = new JLabel(fortune.getTopic());
+        panel.setLayout(new FlowLayout());
+        //topicLabel.setMaximumSize(new Dimension(0, 0));
+        // topicLabel.setHorizontalAlignment(SwingConstants.CENTER);
         JLabel resultLabel = new JLabel(fortune.getResult());
-        panel.add(topicLabel);
+        resultLabel.setMaximumSize(new Dimension(0,0));
+        //topicLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        //panel.add(topicLabel);
         panel.add(resultLabel);
 
         return panel;
     }
 
 
-    // EFFECTS: Initialize the main menu
-    private void initializeMainMenu() {
+    // // EFFECTS: Initialize the main menu
+    // private void initializeMainMenu() {
 
-    }
-
-    // EFFECTS: Updates fortune log panel based on command
-    private void updateFortuneLogPanel(String command) {
-
-    }
+    // }
 
     // EFFECTS: Facilitates adding a fortune
-    private void doAddFortune() {
+    // private void doAddFortune() {
 
-    }
+    // }
 
-    private void doRemoveFortune() {
+    // private void doRemoveFortune() {
 
-    }
+    // }
 
-    private void doSaveGame() {
+    // private void doSaveGame() {
 
-    }
+    // }
 
-    private void doLoadGame() {
-
+    // MODIFIES: this
+    // EFFECTS: reads from JSON file and adds fortunes to fortune log
+    // updates fortune UI
+    public void doLoadGame() {
+        try {
+            fortuneLog = jasonReader.read();
+            System.out.println("Loaded Previous Game from: " + JSON_FILE);
+            updateFortuneArea();
+        } catch (IOException e) {
+            System.out.println("Unable to read from given file");
+        }
     }
 
     private void doQuitGame() {
@@ -137,6 +143,12 @@ public class FortuneGameApp {
     // Adds avalible actions to the list of game actions
     // buttons of game actions are added to button panel
     private void initializeGameActions() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+        frame.add(panel, BorderLayout.PAGE_END);
+
+        LoadGame loadGame = new LoadGame(this, panel);
+        gameActions.add(loadGame);
 
     }
 
@@ -150,7 +162,7 @@ public class FortuneGameApp {
         frame.setVisible(true);
 
         JLabel text = new JLabel("Welcome to The Fortune Game!");
-        text.setHorizontalAlignment(SwingConstants.CENTER);
+        
         frame.add(text, BorderLayout.PAGE_START);
     }
 }

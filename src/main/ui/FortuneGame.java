@@ -18,13 +18,15 @@ import java.util.ArrayList;
 
 // Fortune game application
 @ExcludeFromJacocoGeneratedReport
-public class FortuneGame {
+public class FortuneGame{
+
     private static final String JSON_FILE = "./data/fortunelog.json";
     private FortuneLog fortuneLog;
     private Scanner input;
     private JsonReader jasonReader;
     private JsonWriter jasonWriter;
 
+    // keep
     public FortuneGame() {
         fortuneLog = new FortuneLog();
         input = new Scanner(System.in);
@@ -39,7 +41,9 @@ public class FortuneGame {
         boolean runGame = true;
         String command = null;
 
+        // UI
         displayWelcomeMessage();
+        
         while (runGame) {
             System.out.println();
             displayMenu(); 

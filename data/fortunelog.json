@@ -8,15 +8,5 @@
         "result": "Tails",
         "rating": true,
         "topic": "Will it be sunny?"
-    },
-    {
-        "result": "Heads",
-        "rating": false,
-        "topic": "Will I hand this in on time?"
-    },
-    {
-        "result": "Death, The Magician, Judgement",
-        "rating": false,
-        "topic": "Will I Pass?"
     }
 ]}

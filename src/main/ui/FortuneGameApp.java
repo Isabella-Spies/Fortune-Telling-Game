@@ -3,8 +3,12 @@ import model.Fortune;
 import model.FortuneLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
+import ui.GameActions.AllFortunes;
+import ui.GameActions.BadFortunes;
 import ui.GameActions.GameAction;
+import ui.GameActions.GoodFortunes;
 import ui.GameActions.LoadGame;
+import ui.GameActions.SaveGame;
 
 import java.util.Scanner;
 
@@ -15,6 +19,7 @@ import javax.swing.border.LineBorder;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -71,19 +76,24 @@ public class FortuneGameApp {
         frame.add(fortuneScrollPane, BorderLayout.CENTER);
         fortuneLogPanel.setLayout(new BoxLayout(fortuneLogPanel, BoxLayout.Y_AXIS));
 
-        initializeFortunes(fortuneLogPanel);
+        // initializeFortunes(fortuneLogPanel, fortuneLog.getFortuneList());
+        doSeeAllFortunes();
     }
 
     // REQUIRES: parentPanel == FortuneLogPanel
     // MODIFIES: this
     // EFFECTS: creates the panels for the fortunes and adds them to the scrollPane
-    private void initializeFortunes(JPanel parentPanel) {
+    private void initializeFortunes(JPanel parentPanel, ArrayList<Fortune> fortunes) {
         parentPanel.removeAll();
+        parentPanel.revalidate();
+        parentPanel.repaint();
 
-        for (Fortune fortune : fortuneLog.getFortuneList()) {
+        for (Fortune fortune : fortunes) {
             initializeFortune(fortune, parentPanel);
             System.out.println(fortune.getTopic());
+            System.out.println(fortunes.size());
         }
+        parentPanel.revalidate();
     }
 
     private void initializeFortune(Fortune fortune, JPanel parentPanel) {
@@ -92,14 +102,13 @@ public class FortuneGameApp {
         //fortunePanel.setPreferredSize(new Dimension(500, 5));
         fortunePanel.setBorder(new EtchedBorder());
 
-        //String topicString = fortune.getTopic();
-        //String resultString = fortune.getResult();
-        JLabel topic = new JLabel("Hello");
-        JLabel result = new JLabel("World");
+        String topicString = fortune.getTopic();
+        String resultString = fortune.getResult();
+        JLabel topic = new JLabel(topicString);
+        JLabel result = new JLabel(resultString);
         fortunePanel.add(topic);
         fortunePanel.add(result);
         parentPanel.add(fortunePanel);
-        parentPanel.revalidate();
     }
 
 
@@ -108,7 +117,7 @@ public class FortuneGameApp {
 
     // }
 
-    // EFFECTS: Facilitates adding a fortune
+    // // EFFECTS: Facilitates adding a fortune
     // private void doAddFortune() {
 
     // }
@@ -117,9 +126,34 @@ public class FortuneGameApp {
 
     // }
 
-    // private void doSaveGame() {
+    // EFFECTS: saves current state of game to JSON_FILE
+    public void doSaveGame() {
+        try {
+            jasonWriter.open();
+            jasonWriter.write(fortuneLog);
+            jasonWriter.close();
+            System.out.println("Saved game state");
+            // TO DO: Add a popup menu
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to fiile :(");
+        }
+    }
 
-    // }
+    // MODIFIES: this
+    // EFFECTS: Updates the fortuneLogPanel to show only good rated fortunes
+    public void doSeeGoodFortunes() {
+        initializeFortunes(fortuneLogPanel, fortuneLog.getGoodFortunes());
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Updates the fortuneLogPanel to show only bad rated fortunes
+    public void doSeeBadFortunes() {
+        initializeFortunes(fortuneLogPanel, fortuneLog.getBadFortunes());
+    }
+
+    public void doSeeAllFortunes() {
+        initializeFortunes(fortuneLogPanel, fortuneLog.getFortuneList());
+    }
 
     // MODIFIES: this
     // EFFECTS: reads from JSON file and adds fortunes to fortune log
@@ -128,14 +162,10 @@ public class FortuneGameApp {
         try {
             fortuneLog = jasonReader.read();
             System.out.println("Loaded Previous Game from: " + JSON_FILE);
-            initializeFortunes(fortuneLogPanel);
+            doSeeAllFortunes();
         } catch (IOException e) {
             System.out.println("Unable to read from given file");
         }
-    }
-
-    private void doQuitGame() {
-        System.exit(0);
     }
 
     // Adds avalible actions to the list of game actions
@@ -146,8 +176,22 @@ public class FortuneGameApp {
         frame.add(panel, BorderLayout.PAGE_END);
         panel.setAlignmentY(SwingConstants.SOUTH);
 
+        AllFortunes allFortunes = new AllFortunes(this, panel);
+        gameActions.add(allFortunes);
+
+        GoodFortunes goodFortunes = new GoodFortunes(this, panel);
+        gameActions.add(goodFortunes);
+
+        BadFortunes badFortunes = new BadFortunes(this, panel);
+        gameActions.add(badFortunes);
+
+        SaveGame saveGame =  new SaveGame(this, panel);
+        gameActions.add(saveGame);
+
         LoadGame loadGame = new LoadGame(this, panel);
         gameActions.add(loadGame);
+
+
 
     }
 
@@ -158,7 +202,7 @@ public class FortuneGameApp {
         frame.setSize(WIDTH, HEIGHT);
         frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));
         
-        frame.setDefaultCloseOperation();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
         JLabel text = new JLabel("Welcome to The Fortune Game!");

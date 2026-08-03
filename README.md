@@ -25,12 +25,18 @@ How to view the panel that displays fortunes that have already been added to the
 - If no fortunes are there, click the load button
 
 How to view all of the good rated fortunes:
+- click the Good Fortunes button
+- If there are no fortunes displayed, click the load button, then try again
 
 How to view all of the bad rated fortunes:
+- Click the Bad Fortunes button
+- if there are no fortunes displated, click the load button, then try again
 
 How to load the state of the application from file:
+- Click the load button
 
 How to save the state of the application to file:
+- Click the save button
 
 
 

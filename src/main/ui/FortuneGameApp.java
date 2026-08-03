@@ -99,6 +99,9 @@ public class FortuneGameApp {
         parentPanel.revalidate();
     }
 
+    // REQUIRES: fortune != null, parentPanel != null
+    // MODIFIES: this
+    // EFFECTS: creates the fortune UI
     private void initializeFortune(Fortune fortune, JPanel parentPanel) {
         JPanel fortunePanel = new JPanel();
         fortunePanel.setLayout(new BoxLayout(fortunePanel, BoxLayout.Y_AXIS));
@@ -118,6 +121,8 @@ public class FortuneGameApp {
         parentPanel.add(fortunePanel);
     }
 
+    // EFFECTS: adds images to coin flips
+    // TO DO: add logic for card readings
     private JLabel addImage(String result) {
         switch(result) {
             case "Heads":

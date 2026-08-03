@@ -38,6 +38,9 @@ How to load the state of the application from file:
 How to save the state of the application to file:
 - Click the save button
 
+How to view the visual component:
+- Any coin reading will have a coin image below it, indicating the result
+
 
 
 ## Citations

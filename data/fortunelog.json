@@ -12,6 +12,6 @@
     {
         "result" : "The Magician, The Star, The Sun",
         "rating" : true,
-        "Topic" : "Does the UI look good?"
+        "topic" : "Does the UI look good?"
     }
 ]}

@@ -24,22 +24,26 @@ How to view the panel that displays fortunes that have already been added to the
 - It is the panel in the center.
 - If no fortunes are there, click the load button
 
+How to view all of the fortunes in the log:
+- click the "All Fortunes" button
+- if no fortunes appear, press the "Load Game" button or the "Add Fortune Button"
+
 How to view all of the good rated fortunes:
 - click the Good Fortunes button
-- If there are no fortunes displayed, click the load button, then try again
+- If there are no fortunes displayed, click the "Load Game" button, then try again
 
 How to view all of the bad rated fortunes:
-- Click the Bad Fortunes button
-- if there are no fortunes displated, click the load button, then try again
+- Click the "Bad Fortunes" button
+- if there are no fortunes displated, click the "Load Game" button, then try again
 
 How to load the state of the application from file:
-- Click the load button
+- Click the "Load Game" button
 
 How to save the state of the application to file:
-- Click the save button
+- Click the "Save Game" button
 
 How to view the visual component:
-- Any coin reading will have a coin image below it, indicating the result
+- Any Coin Flip reading will have a coin image below it, indicating the result.
 
 
 
@@ -47,4 +51,3 @@ How to view the visual component:
 Basic Teller App: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
 JSON Serialization App: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
 SimpleDrawingPlayer - Complete: https://github.students.cs.ubc.ca/CPSC210/SimpleDrawingPlayer-Complete.git
-

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 // Fortune game application
 @ExcludeFromJacocoGeneratedReport
-public class FortuneGame{
+public class FortuneGame {
 
     private static final String JSON_FILE = "./data/fortunelog.json";
     private FortuneLog fortuneLog;

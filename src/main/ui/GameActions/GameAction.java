@@ -1,4 +1,4 @@
-package ui.GameActions;
+package ui.gameactions;
 
 import javax.swing.*;
 

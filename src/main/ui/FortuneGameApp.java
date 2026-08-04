@@ -1,27 +1,22 @@
 package ui;
+
 import model.CardReading;
 import model.CoinFlip;
 import model.Fortune;
 import model.FortuneLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
-import ui.GameActions.*;
-
-
-import java.util.Scanner;
+import ui.gameactions.*;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 @ExcludeFromJacocoGeneratedReport
@@ -32,8 +27,8 @@ public class FortuneGameApp {
 
     public static final int WIDTH = 550;
     public static final int HEIGHT = 370;
-    public static final int CENTER_X = WIDTH/2 ;
-    public static final int CENTER_Y = HEIGHT/2;
+    public static final int CENTER_X = WIDTH / 2;
+    public static final int CENTER_Y = HEIGHT / 2;
     public static final Color BG_COLOR = new Color(47, 36, 102);
     public static final Color TEXT_COLOR = new Color(255, 248, 212);
 
@@ -158,7 +153,7 @@ public class FortuneGameApp {
     // EFFECTS: adds images to coin flips
     // TO DO: add logic for card readings
     private JLabel addImage(String result) {
-        switch(result) {
+        switch (result) {
             case "Heads":
                 return new JLabel(HEADS_IMAGE);
             

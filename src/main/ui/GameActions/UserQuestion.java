@@ -1,4 +1,4 @@
-package ui.GameActions;
+package ui.gameactions;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -13,7 +13,7 @@ import ui.FortuneGameApp;
 
 // A button and text field that takes the topic for the fortune
 @ExcludeFromJacocoGeneratedReport
-public class UserQuestion extends GameAction{
+public class UserQuestion extends GameAction {
 
     private JTextField myField;
     private UserQuestionActionClickHandler listener;

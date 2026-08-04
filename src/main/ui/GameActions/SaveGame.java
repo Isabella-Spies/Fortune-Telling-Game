@@ -1,4 +1,4 @@
-package ui.GameActions;
+package ui.gameactions;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,7 @@ import ui.FortuneGameApp;
 
 // A button that saves the current game state to JSON file
 @ExcludeFromJacocoGeneratedReport
-public class SaveGame extends GameAction{
+public class SaveGame extends GameAction {
 
     public SaveGame(FortuneGameApp fortuneGame, JComponent parent) {
         super(fortuneGame, parent);

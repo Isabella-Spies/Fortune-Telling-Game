@@ -1,4 +1,4 @@
-package ui.GameActions;
+package ui.gameactions;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

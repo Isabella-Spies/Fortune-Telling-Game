@@ -1,4 +1,4 @@
-package ui.GameActions;
+package ui.gameactions;
 
 import javax.swing.JComponent;
 
@@ -7,7 +7,7 @@ import ui.FortuneGameApp;
 
 // A button that quits the game (Unused)
 @ExcludeFromJacocoGeneratedReport
-public class QuitGame extends GameAction{
+public class QuitGame extends GameAction {
 
     public QuitGame(FortuneGameApp fortuneGame, JComponent parent) {
         super(fortuneGame, parent);

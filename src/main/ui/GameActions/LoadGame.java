@@ -6,9 +6,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 import ui.FortuneGameApp;
 
-
+// A button that loads the save data from JSON file
+@ExcludeFromJacocoGeneratedReport
 public class LoadGame extends GameAction {
 
     public LoadGame(FortuneGameApp fortuneGame, JComponent parent) {

@@ -2,12 +2,16 @@ package ui.GameActions;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
+
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import ui.FortuneGameApp;
 
-
+// Button that allows the user to give a fortune a good rating
+@ExcludeFromJacocoGeneratedReport
 public class GoodRating extends GameAction {
 
     public GoodRating(FortuneGameApp fortuneGame, JComponent parent) {

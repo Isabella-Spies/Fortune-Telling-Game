@@ -6,8 +6,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 import ui.FortuneGameApp;
 
+// A button that saves the current game state to JSON file
+@ExcludeFromJacocoGeneratedReport
 public class SaveGame extends GameAction{
 
     public SaveGame(FortuneGameApp fortuneGame, JComponent parent) {

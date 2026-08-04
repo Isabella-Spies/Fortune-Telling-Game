@@ -26,7 +26,8 @@ public class FortuneGame{
     private JsonReader jasonReader;
     private JsonWriter jasonWriter;
 
-    // keep
+    // MODIFIES: this
+    // EFFECTS: constructor
     public FortuneGame() {
         fortuneLog = new FortuneLog();
         input = new Scanner(System.in);

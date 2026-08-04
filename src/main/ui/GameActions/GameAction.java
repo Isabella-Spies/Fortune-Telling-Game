@@ -2,10 +2,12 @@ package ui.GameActions;
 
 import javax.swing.*;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 import ui.FortuneGameApp;
 
 // Representation of a possible user interaction with a button
-// Designed with help from SimpleDrawingPlayer
+// This and all extensions of this class are designed with help from SimpleDrawingPlayer
+@ExcludeFromJacocoGeneratedReport
 public abstract class GameAction {
     
     protected FortuneGameApp fortuneGame;
@@ -21,12 +23,12 @@ public abstract class GameAction {
         addListenter();
     }
 
-    // Creates button to add to parent
+    // EFFECTS: Creates button to add to parent
     protected abstract void createButton(JComponent parent);
 
     protected abstract void addListenter();
 
-    // Adds button to parent
+    // EFFECTS: Adds button to parent
     protected void addToParent(JComponent parent) {
         parent.add(button);
     }

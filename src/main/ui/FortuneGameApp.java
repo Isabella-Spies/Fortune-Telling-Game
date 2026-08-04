@@ -15,6 +15,8 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -22,6 +24,7 @@ import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
+@ExcludeFromJacocoGeneratedReport
 // Representation of the UI for the FortuneGame
 public class FortuneGameApp {
 
@@ -58,6 +61,7 @@ public class FortuneGameApp {
         runFortuneGame();
     }
 
+    // MODIFIES: this
     // EFFECTS: Initializes all fields
     private void initializeFields() {
         fortuneLog = new FortuneLog();
@@ -72,13 +76,12 @@ public class FortuneGameApp {
         initializeAddFortunePopup();
     }
 
-    // Starts the app
+    // EFFECTS: Starts the app
     private void runFortuneGame() {
         initializeStartingVeiw();
     }
 
     // EFFECTS: initializes the starting panel
-    // See Diagram for button config
     private void initializeStartingVeiw() {
         defaultGraphics();
         initializeFortuneArea();
@@ -86,6 +89,7 @@ public class FortuneGameApp {
         frame.revalidate();
     }
 
+    // EFFECTS: initializes the fortune area
     private void initializeFortuneArea() {
         fortuneScrollPane.setPreferredSize(new Dimension(0, 0));
         fortuneScrollPane.setBorder(new LineBorder(Color.black));
@@ -172,12 +176,15 @@ public class FortuneGameApp {
 
     // }
 
+    // MODIFIES: this
     // EFFECTS: Facilitates adding a fortune
     public void doAddFortune() {
         initializeAddFortunePopup();
         addPopupMenu.show(frame, (CENTER_X - 175), 100);
     }
 
+    // REQUIRES: type != null
+    // MODIFIES: this
     // EFFECTS: activates Question popup
     public void doAskQuestion(String type) {
         this.tempType = type;
@@ -193,6 +200,8 @@ public class FortuneGameApp {
         addPopupMenu.repaint();
     }
 
+    // REQUIRES: user input != null
+    // MODIFIES: this
     // EFFECTS: shows the result of the fortune roll and allows user to rate
     public void doShowResult(String userInput) {
         Fortune fortune;
@@ -224,6 +233,7 @@ public class FortuneGameApp {
         addPopupMenu.repaint();
     }
 
+    // MODIFIES: this
     // EFFECTS: assigns fortune good rating, refreshes and closes popup, updates fortune list
     public void giveGoodRating() {
         tempFortune.setRating(true);
@@ -235,6 +245,7 @@ public class FortuneGameApp {
         initializeFortunes(fortuneLogPanel, fortuneLog.getFortuneList(), 0);
     }
 
+    // MODIFIES: this
     // EFFECTS: assigns fortune a bad rating, refreshes and closes the popup, updates fortune list
     public void giveBadRating() {
         tempFortune.setRating(false);
@@ -246,6 +257,7 @@ public class FortuneGameApp {
         initializeFortunes(fortuneLogPanel, fortuneLog.getFortuneList(), 0);
     }
 
+    // MODIFIES: this
     // EFFECTS: initializes the add fortune popup to be used
     private void initializeAddFortunePopup() {
 
@@ -269,6 +281,7 @@ public class FortuneGameApp {
 
     // }
 
+    // MODIFIES: Json file
     // EFFECTS: saves current state of game to JSON_FILE
     public void doSaveGame() {
         try {
@@ -294,6 +307,8 @@ public class FortuneGameApp {
         initializeFortunes(fortuneLogPanel, fortuneLog.getBadFortunes(), 2);
     }
 
+    // MODIFIES: this
+    // EFFECTS
     public void doSeeAllFortunes() {
         initializeFortunes(fortuneLogPanel, fortuneLog.getFortuneList(), 0);
     }

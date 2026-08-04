@@ -46,4 +46,5 @@ How to view the visual component:
 ## Citations
 Basic Teller App: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
 JSON Serialization App: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
-SimpleDrawingPlayer - Complete: 
+SimpleDrawingPlayer - Complete: https://github.students.cs.ubc.ca/CPSC210/SimpleDrawingPlayer-Complete.git
+

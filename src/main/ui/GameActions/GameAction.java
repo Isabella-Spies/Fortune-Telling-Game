@@ -27,7 +27,7 @@ public abstract class GameAction {
     protected abstract void addListenter();
 
     // Adds button to parent
-    private void addToParent(JComponent parent) {
+    protected void addToParent(JComponent parent) {
         parent.add(button);
     }
 

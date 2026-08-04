@@ -29,6 +29,8 @@ public class FortuneGameApp {
 
     public static final int WIDTH = 550;
     public static final int HEIGHT = 370;
+    public static final int CENTER_X = WIDTH/2 ;
+    public static final int CENTER_Y = HEIGHT/2;
     public static final Color BG_COLOR = new Color(47, 36, 102);
     public static final Color TEXT_COLOR = new Color(255, 248, 212);
 
@@ -46,6 +48,10 @@ public class FortuneGameApp {
     private ArrayList<GameAction> gameActions;
 
 
+    private String tempType;
+    private Fortune tempFortune;
+
+
 
     public FortuneGameApp() {
         initializeFields();
@@ -61,6 +67,8 @@ public class FortuneGameApp {
         gameActions = new ArrayList<GameAction>();
         fortuneLogPanel = new JPanel();
         fortuneScrollPane = new JScrollPane(fortuneLogPanel);
+        tempType = "";
+        tempFortune = null;
         initializeAddFortunePopup();
     }
 
@@ -167,58 +175,83 @@ public class FortuneGameApp {
     // EFFECTS: Facilitates adding a fortune
     public void doAddFortune() {
         initializeAddFortunePopup();
-        addPopupMenu.show(frame, 50, 50);
+        addPopupMenu.show(frame, (CENTER_X - 175), 100);
     }
 
     // EFFECTS: activates Question popup
     public void doAskQuestion(String type) {
+        this.tempType = type;
         addPopupMenu.removeAll();
         JLabel question = new JLabel("You have chosen a " + type);
         JLabel prompt = new JLabel("What is your Question for the fortune teller?");
-        JTextField userInput = new JTextField();
 
         addPopupMenu.add(question);
         addPopupMenu.add(prompt);
-        addPopupMenu.add(userInput);
-        SubmitQuestion submitQuestion = new SubmitQuestion(this, addPopupMenu, userInput, type);
+        UserQuestion userQuestion = new UserQuestion(this, addPopupMenu);
         
         addPopupMenu.revalidate();
         addPopupMenu.repaint();
     }
 
     // EFFECTS: shows the result of the fortune roll and allows user to rate
-    public void doShowResult(String userInput, String type) {
+    public void doShowResult(String userInput) {
         Fortune fortune;
-        if (type.equals("Card Reading")) {
+        if (tempType.equals("Card Reading")) {
             fortune = new CardReading(userInput);
+            this.tempType = null;
         } else {
             fortune = new CoinFlip(userInput);
+            this.tempType = null;
         }
 
         fortune.rollFortune();
         fortuneLog.addFortune(fortune);
+        tempFortune = fortune;
 
         addPopupMenu.removeAll();
 
         JLabel result = new JLabel("The result is: " + fortune.getResult());
+        JLabel image = addImage(fortune.getResult());
         addPopupMenu.add(result);
+        if (image != null) {
+            addPopupMenu.add(image);
+        }
 
+        GoodRating goodRating = new GoodRating(this, addPopupMenu);
+        BadRating badRating = new BadRating(this, addPopupMenu);
+
+        addPopupMenu.revalidate();
+        addPopupMenu.repaint();
     }
 
     // EFFECTS: assigns fortune good rating, refreshes and closes popup, updates fortune list
-    public void giveGoodRating(Fortune fortune) {
+    public void giveGoodRating() {
+        tempFortune.setRating(true);
+        tempFortune = null;
 
+        addPopupMenu.removeAll();
+        addPopupMenu.setVisible(false);
+
+        initializeFortunes(fortuneLogPanel, fortuneLog.getFortuneList(), 0);
     }
 
     // EFFECTS: assigns fortune a bad rating, refreshes and closes the popup, updates fortune list
-    public void giveBadRating(Fortune fortune) {
+    public void giveBadRating() {
+        tempFortune.setRating(false);
+        tempFortune = null;
 
+        addPopupMenu.removeAll();
+        addPopupMenu.setVisible(false);
+
+        initializeFortunes(fortuneLogPanel, fortuneLog.getFortuneList(), 0);
     }
 
     // EFFECTS: initializes the add fortune popup to be used
     private void initializeAddFortunePopup() {
 
         addPopupMenu = new JPopupMenu("Add Fortune");
+        addPopupMenu.setPreferredSize(new Dimension(WIDTH - 200, HEIGHT - 200));
+
         addPopupMenu.removeAll();
         JLabel questionText = new JLabel("Would you like to do a card reading or coin flip?");
         addPopupMenu.add(questionText);

@@ -29,7 +29,7 @@ public class CoinFlipChoice extends GameAction {
         // Effects: call the load game method in the fortune game app
         @Override
         public void actionPerformed(ActionEvent e) {
-            fortuneGame.doAskQuestion("Card Reading");
+            fortuneGame.doAskQuestion("Coin Flip");
         }
     }
     

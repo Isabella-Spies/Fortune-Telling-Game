@@ -325,13 +325,10 @@ public class FortuneGameApp {
     // buttons of game actions are added to button panel
     private void initializeGameActions() {
         JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+        panel.setLayout(new GridLayout(2, 5));
         panel.setBackground(BG_COLOR);
         frame.add(panel, BorderLayout.PAGE_END);
         panel.setAlignmentY(SwingConstants.SOUTH);
-
-        AddFortune addFortune = new AddFortune(this, panel);
-        gameActions.add(addFortune);
 
         AllFortunes allFortunes = new AllFortunes(this, panel);
         gameActions.add(allFortunes);
@@ -341,6 +338,9 @@ public class FortuneGameApp {
 
         BadFortunes badFortunes = new BadFortunes(this, panel);
         gameActions.add(badFortunes);
+
+        AddFortune addFortune = new AddFortune(this, panel);
+        gameActions.add(addFortune);
 
         SaveGame saveGame =  new SaveGame(this, panel);
         gameActions.add(saveGame);

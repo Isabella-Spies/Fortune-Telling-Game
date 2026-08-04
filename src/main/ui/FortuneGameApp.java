@@ -1,14 +1,12 @@
 package ui;
+import model.CardReading;
+import model.CoinFlip;
 import model.Fortune;
 import model.FortuneLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
-import ui.GameActions.AllFortunes;
-import ui.GameActions.BadFortunes;
-import ui.GameActions.GameAction;
-import ui.GameActions.GoodFortunes;
-import ui.GameActions.LoadGame;
-import ui.GameActions.SaveGame;
+import ui.GameActions.*;
+
 
 import java.util.Scanner;
 
@@ -40,6 +38,7 @@ public class FortuneGameApp {
     private JFrame frame;
     private JPanel fortuneLogPanel;
     private JScrollPane fortuneScrollPane;
+    private JPopupMenu addPopupMenu;
 
     private FortuneLog fortuneLog;
     private JsonReader jasonReader;
@@ -49,6 +48,12 @@ public class FortuneGameApp {
 
 
     public FortuneGameApp() {
+        initializeFields();
+        runFortuneGame();
+    }
+
+    // EFFECTS: Initializes all fields
+    private void initializeFields() {
         fortuneLog = new FortuneLog();
         jasonReader = new JsonReader(JSON_FILE);
         jasonWriter = new JsonWriter(JSON_FILE);
@@ -56,7 +61,7 @@ public class FortuneGameApp {
         gameActions = new ArrayList<GameAction>();
         fortuneLogPanel = new JPanel();
         fortuneScrollPane = new JScrollPane(fortuneLogPanel);
-        runFortuneGame();
+        initializeAddFortunePopup();
     }
 
     // Starts the app
@@ -159,10 +164,73 @@ public class FortuneGameApp {
 
     // }
 
-    // // EFFECTS: Facilitates adding a fortune
-    // private void doAddFortune() {
+    // EFFECTS: Facilitates adding a fortune
+    public void doAddFortune() {
+        initializeAddFortunePopup();
+        addPopupMenu.show(frame, 50, 50);
+    }
 
-    // }
+    // EFFECTS: activates Question popup
+    public void doAskQuestion(String type) {
+        addPopupMenu.removeAll();
+        JLabel question = new JLabel("You have chosen a " + type);
+        JLabel prompt = new JLabel("What is your Question for the fortune teller?");
+        JTextField userInput = new JTextField();
+
+        addPopupMenu.add(question);
+        addPopupMenu.add(prompt);
+        addPopupMenu.add(userInput);
+        SubmitQuestion submitQuestion = new SubmitQuestion(this, addPopupMenu, userInput, type);
+        
+        addPopupMenu.revalidate();
+        addPopupMenu.repaint();
+    }
+
+    // EFFECTS: shows the result of the fortune roll and allows user to rate
+    public void doShowResult(String userInput, String type) {
+        Fortune fortune;
+        if (type.equals("Card Reading")) {
+            fortune = new CardReading(userInput);
+        } else {
+            fortune = new CoinFlip(userInput);
+        }
+
+        fortune.rollFortune();
+        fortuneLog.addFortune(fortune);
+
+        addPopupMenu.removeAll();
+
+        JLabel result = new JLabel("The result is: " + fortune.getResult());
+        addPopupMenu.add(result);
+
+    }
+
+    // EFFECTS: assigns fortune good rating, refreshes and closes popup, updates fortune list
+    public void giveGoodRating(Fortune fortune) {
+
+    }
+
+    // EFFECTS: assigns fortune a bad rating, refreshes and closes the popup, updates fortune list
+    public void giveBadRating(Fortune fortune) {
+
+    }
+
+    // EFFECTS: initializes the add fortune popup to be used
+    private void initializeAddFortunePopup() {
+
+        addPopupMenu = new JPopupMenu("Add Fortune");
+        addPopupMenu.removeAll();
+        JLabel questionText = new JLabel("Would you like to do a card reading or coin flip?");
+        addPopupMenu.add(questionText);
+    
+        CardReadingChoice cardReading = new CardReadingChoice(this, addPopupMenu);
+        CoinFlipChoice coinFlip = new CoinFlipChoice(this, addPopupMenu);
+
+        addPopupMenu.revalidate();
+        addPopupMenu.repaint();
+        
+    }
+
 
     // private void doRemoveFortune() {
 
@@ -218,6 +286,9 @@ public class FortuneGameApp {
         panel.setBackground(BG_COLOR);
         frame.add(panel, BorderLayout.PAGE_END);
         panel.setAlignmentY(SwingConstants.SOUTH);
+
+        AddFortune addFortune = new AddFortune(this, panel);
+        gameActions.add(addFortune);
 
         AllFortunes allFortunes = new AllFortunes(this, panel);
         gameActions.add(allFortunes);

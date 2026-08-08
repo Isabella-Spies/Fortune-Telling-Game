@@ -45,9 +45,34 @@ How to save the state of the application to file:
 How to view the visual component:
 - Any Coin Flip reading will have a coin image below it, indicating the result.
 
+## Phase 4: Tesk 2
+Event Log Sample:
+
+Event: All fortunes were retrieved
+Event: Save data loading process has started:
+Event: A fortune was added to the log
+Event: A fortune was added to the log
+Event: A fortune was added to the log
+Event: A fortune was added to the log
+Event: A fortune was added to the log
+Event: A fortune was added to the log
+Event: A fortune was added to the log
+Event: A fortune was added to the log
+Event: All fortunes were retrieved
+Event: Save data loading process has ended.
+Event: All fortunes were retrieved
+Event: All fortunes with a good rating were retrieved
+Event: All fortunes with a bad rating were retrieved
+Event: A Coin Flip was instantiated
+Event: A result was added to the fortune.
+Event: A fortune was added to the log
+Event: A rating was added to the fortune
+Event: All fortunes were retrieved
+Event: Data was saved to file
 
 
 ## Citations
 Basic Teller App: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
 JSON Serialization App: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
 SimpleDrawingPlayer - Complete: https://github.students.cs.ubc.ca/CPSC210/SimpleDrawingPlayer-Complete.git
+Alarm System: https://github.students.cs.ubc.ca/CPSC210/AlarmSystem.git

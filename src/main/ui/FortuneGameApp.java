@@ -2,8 +2,12 @@ package ui;
 
 import model.CardReading;
 import model.CoinFlip;
+import model.EventLog;
 import model.Fortune;
 import model.FortuneLog;
+import model.Event;
+import model.EventLog;
+
 import persistence.JsonReader;
 import persistence.JsonWriter;
 import ui.gameactions.*;
@@ -15,13 +19,15 @@ import javax.swing.border.LineBorder;
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
 @ExcludeFromJacocoGeneratedReport
 // Representation of the UI for the FortuneGame
-public class FortuneGameApp {
+public class FortuneGameApp implements WindowListener{
 
     private static final String JSON_FILE = "./data/fortunelog.json";
 
@@ -356,12 +362,55 @@ public class FortuneGameApp {
         frame.setSize(WIDTH, HEIGHT);
         frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));
         
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(this);
         frame.setVisible(true);
 
         JLabel text = new JLabel("Welcome to The Fortune Game!", SwingConstants.CENTER);
     
         frame.add(text, BorderLayout.PAGE_START);
+
+    }
+
+    public void printLog(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next.toString());
+        }
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        EventLog eventLog = EventLog.getInstance();
+        printLog(eventLog);
+        eventLog.clear();
+        System.exit(0);
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
 
     }
 }

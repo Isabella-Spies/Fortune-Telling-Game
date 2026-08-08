@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 @ExcludeFromJacocoGeneratedReport
 // Representation of the UI for the FortuneGame
-public class FortuneGameApp implements WindowListener{
+public class FortuneGameApp implements WindowListener {
 
     private static final String JSON_FILE = "./data/fortunelog.json";
 
@@ -374,7 +374,7 @@ public class FortuneGameApp implements WindowListener{
 
     public void printLog(EventLog el) {
         for (Event next : el) {
-            System.out.println(next.toString());
+            System.out.println("Event: " + next.getDescription());
         }
     }
 

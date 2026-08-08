@@ -50,11 +50,14 @@ public class JsonReader {
 
     // EFFECTS: Parses FortuneLOG from JSONObject and retuns it
     private FortuneLog parseFortuneLog(JSONObject jsonObject) {
+        Event event = new Event("Save data loading process has started: ");
+        eventLog.logEvent(event);
+
         FortuneLog fortuneLog = new FortuneLog();
         addFortunes(fortuneLog, jsonObject);
 
-        Event event = new Event("Save Data was loaded");
-        eventLog.logEvent(event);
+        Event event2 = new Event("Save data loading process has ended ");
+        eventLog.logEvent(event2);
 
         return fortuneLog;
     }

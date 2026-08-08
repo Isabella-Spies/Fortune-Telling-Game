@@ -11,6 +11,8 @@ public class CoinFlip extends Fortune {
     //          rating starts as false
     public CoinFlip(String topic) {
         super(topic);
+        Event event = new Event("A Coin Flip was instantiated");
+        eventLog.logEvent(event);
     }
 
 
@@ -28,6 +30,8 @@ public class CoinFlip extends Fortune {
     public void rollFortune() {
         int flip = random.nextInt(2);
         result = interpretFortune(flip);
+        Event event = new Event("A result was added to the fortune.");
+        eventLog.logEvent(event);
     }
 
     // REQUIRES: flip >= 0

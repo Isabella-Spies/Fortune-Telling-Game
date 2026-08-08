@@ -30,7 +30,7 @@ public class FortuneGameApp {
     public static final int CENTER_X = WIDTH / 2;
     public static final int CENTER_Y = HEIGHT / 2;
     public static final Color BG_COLOR = new Color(47, 36, 102);
-    public static final Color TEXT_COLOR = new Color(255, 248, 212);
+    public static final Color SECOND_COLOR = new Color(255, 248, 212);
 
     public static final ImageIcon HEADS_IMAGE = new ImageIcon("./data/Images/Heads.png");
     public static final ImageIcon TAILS_IMAGE = new ImageIcon("./data/Images/Tails.png");
@@ -106,8 +106,6 @@ public class FortuneGameApp {
 
         for (Fortune fortune : fortunes) {
             initializeFortune(fortune, parentPanel, type);
-            System.out.println(fortune.getTopic());
-            System.out.println(fortunes.size());
         }
         parentPanel.revalidate();
     }
@@ -361,10 +359,8 @@ public class FortuneGameApp {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
-        JLabel text = new JLabel("Welcome to The Fortune Game!");
-        // text.setAlignmentX(SwingConstants.CENTER);
-        // text.setAlignmentY(SwingConstants.TOP);
-        
+        JLabel text = new JLabel("Welcome to The Fortune Game!", SwingConstants.CENTER);
+    
         frame.add(text, BorderLayout.PAGE_START);
 
     }

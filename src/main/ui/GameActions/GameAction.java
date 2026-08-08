@@ -26,6 +26,10 @@ public abstract class GameAction {
     // EFFECTS: Creates button to add to parent
     protected abstract void createButton(JComponent parent);
 
+    protected void customizeButton() {
+        
+    }
+
     protected abstract void addListenter();
 
     // EFFECTS: Adds button to parent

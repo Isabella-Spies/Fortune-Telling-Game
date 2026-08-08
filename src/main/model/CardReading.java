@@ -21,6 +21,8 @@ public class CardReading extends Fortune {
         reader = new JsonReader(FILE_PATH);
         resultNums = new ArrayList<Integer>();
         cardNames = reader.readCards();
+        Event event = new Event("A Card Reading was instantiated");
+        eventLog.logEvent(event);
     
     }
 
@@ -43,6 +45,9 @@ public class CardReading extends Fortune {
         }
         this.resultNums = results;
         this.result = interpretResults(results);
+
+        Event event = new Event("A result was added to the fortune");
+        eventLog.logEvent(event);
     }
 
     // MODIFIES: this

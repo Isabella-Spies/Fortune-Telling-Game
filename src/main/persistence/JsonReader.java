@@ -1,6 +1,8 @@
 package persistence;
 
 import model.CoinFlip;
+import model.EventLog;
+import model.Event;
 import model.Fortune;
 import model.FortuneLog;
 
@@ -18,11 +20,13 @@ import org.json.*;
 public class JsonReader {
 
     private String file;
+    private EventLog eventLog;
 
     // MODIFIES: this
     // EFFECTS: creates a JSON Reader that reads from given file
     public JsonReader(String file) {
         this.file = file;
+        eventLog = EventLog.getInstance();
     }
 
     // EFFECTS: reads and returns a fortune log from file
@@ -48,6 +52,10 @@ public class JsonReader {
     private FortuneLog parseFortuneLog(JSONObject jsonObject) {
         FortuneLog fortuneLog = new FortuneLog();
         addFortunes(fortuneLog, jsonObject);
+
+        Event event = new Event("Save Data was loaded");
+        eventLog.logEvent(event);
+
         return fortuneLog;
     }
 

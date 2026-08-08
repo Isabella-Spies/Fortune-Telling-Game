@@ -12,6 +12,7 @@ public abstract class Fortune implements Writable {
     protected String result;
     protected boolean rating;
     protected Random random = new Random();
+    protected EventLog eventLog;
 
 
     // REQUIRES: topic has a non zero length
@@ -22,6 +23,7 @@ public abstract class Fortune implements Writable {
     public Fortune(String topic) {
         this.topic = topic;
         this.rating = false;
+        this.eventLog = EventLog.getInstance();
     }
 
     // REQUIRES: topic and result has non zero length
@@ -58,6 +60,8 @@ public abstract class Fortune implements Writable {
 
     public void setRating(boolean rating) {
         this.rating = rating;
+        Event event = new Event("A rating was added to the fortune");
+        eventLog.logEvent(event);
     }
 
     public void setResult(String result) {

@@ -1,6 +1,9 @@
 package persistence;
 
 import model.FortuneLog;
+import model.EventLog;
+import model.Event;
+
 import org.json.JSONObject;
 
 import java.io.*;
@@ -13,10 +16,12 @@ public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;
     private String destination;
+    private EventLog eventLog;
     
     // EFFECTS: contructs a writer to write to the given destination file
     public JsonWriter(String destination) {
         this.destination = destination;
+        this.eventLog = EventLog.getInstance();
     }
 
     // MODIFIES: this
@@ -31,6 +36,9 @@ public class JsonWriter {
     public void write(FortuneLog fortuneLog) {
         JSONObject json = fortuneLog.toJson();
         saveToFile(json.toString(TAB));
+
+        Event event = new Event("Data was saved to file");
+        eventLog.logEvent(event);
     }
 
     // MODIFIES: this

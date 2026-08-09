@@ -1,17 +1,52 @@
 {"fortuneList": [
     {
-        "result" : "Heads",
+        "result": "Heads",
         "rating": true,
         "topic": "Will it rain?"
     },
     {
-        "result" : "Tails",
-        "rating" : false,
-        "topic" : "Will it be sunny?"
+        "result": "Tails",
+        "rating": false,
+        "topic": "Will it be sunny?"
     },
     {
-        "result" : "The Magician, The Star, The Sun",
-        "rating" : true,
-        "topic" : "Does the UI look good?"
+        "result": "The Magician, The Star, The Sun",
+        "rating": true,
+        "topic": "Does the UI look good?"
+    },
+    {
+        "result": "Heads",
+        "rating": true,
+        "topic": "Will the smoke go away? Heads for yes."
+    },
+    {
+        "result": "The Tower, Temperance, The High Priestess",
+        "rating": false,
+        "topic": "Will the midterm be easy?"
+    },
+    {
+        "result": "Tails",
+        "rating": false,
+        "topic": "What coin side am I thinking of right now?"
+    },
+    {
+        "result": "Tails",
+        "rating": false,
+        "topic": "Is this a good phase 4 implementation?"
+    },
+    {
+        "result": "Justice, The Moon, The Hanged Man",
+        "rating": true,
+        "topic": "What are the vibes for today?"
+    },
+    {
+        "result": "Heads",
+        "rating": true,
+        "topic": "Yippee!"
+    },
+    {
+        "result": "Heads",
+        "rating": true,
+        "topic": "Am I cool?"
     }
 ]}

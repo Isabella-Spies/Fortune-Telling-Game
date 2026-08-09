@@ -70,6 +70,11 @@ Event: A rating was added to the fortune
 Event: All fortunes were retrieved
 Event: Data was saved to file
 
+## Phase 4: Task 3
+If I had more time to work on this project I would take the time to refactor the FortuneGameApp.java class to only handle the UI and not the functionality of running the game. I would then add a class that handles the fortune log and all associated functions to reduce the responsibilities placed on ForuneGameApp.java. Then, I would either remove the implementation of FortuneGame.java, or move the implementation in FortuneGameApp.java to FortuneGame.java and remove the FortuneGameApp.java class. I would also try to refactor my event handling so that only FortuneLog.java and FortuneGameApp.java needs to have a reference to EventLog.
+
+My reasoning for these changes is that currently, the FortuneGameApp handles too much and I believe it violates the Single Responsibility Principle. Additionally, FortuneGame.java is not instantiated in Main.java and is out of date with regards to nessesary changes that were made as the project progressed. Thus, FortuneGame.java is unnessesary and could be removed. Lastly, for the event handling changes, my reasoning for this is wanting to remove a potentially unnessecary reference to EventLog.java in Fortune.java. 
+
 
 ## Citations
 Basic Teller App: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git

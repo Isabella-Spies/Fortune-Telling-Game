@@ -76,6 +76,7 @@ If I had more time to work on this project I would take the time to refactor the
 My reasoning for these changes is that currently, the FortuneGameApp handles too much and I believe it violates the Single Responsibility Principle. Additionally, FortuneGame.java is not instantiated in Main.java and is out of date with regards to nessesary changes that were made as the project progressed. Thus, FortuneGame.java is unnessesary and could be removed. Lastly, for the event handling changes, my reasoning for this is wanting to remove a potentially unnessecary reference to EventLog.java in Fortune.java. 
 
 
+
 ## Citations
 Basic Teller App: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
 JSON Serialization App: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
